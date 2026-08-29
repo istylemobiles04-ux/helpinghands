@@ -1782,38 +1782,41 @@ openPayment(
 );
 };
 /* ================= PAYTM ================= */
-window.payPaytm =
-function(){
-const upi =
-buildUPI();
-if(!upi){
-return;
+function payPaytm(){
+
+  const upi = buildUPI();
+
+  if(!upi){
+    return;
+  }
+
+  const isIOS =
+    /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if(isIOS){
+
+    paymentStatus.style.display = "block";
+
+    paymentStatus.innerHTML =
+      "<strong>Paytm</strong>" +
+      "<br><br>" +
+      "Please open Paytm and use the UPI ID below." +
+      "<br><br>" +
+      "<button type='button' onclick='copyUPI()'>" +
+      "COPY UPI ID" +
+      "</button>";
+
+    return;
+  }
+
+  const query = upi.split("?")[1];
+
+  openPayment(
+    "paytmmp://pay?" + query,
+    "Paytm"
+  );
+
 }
-const query =
-upi.split("?")[1];
-/*
-  Android:
-  Try Paytm's UPI app scheme.
-  iOS:
-  Use the standard UPI handoff rather than
-  incorrectly routing through WhatsApp.
-*/
-const isAndroid =
-/Android/i.test(
-navigator.userAgent
-);
-if(isAndroid){
-openPayment(
-"paytmmp://pay?" + query,
-"Paytm"
-);
-}else{
-openPayment(
-"upi://pay?" + query,
-"Paytm"
-);
-}
-};
 /* ================= COPY UPI ================= */
 window.copyUPI =
 async function(){
