@@ -1328,10 +1328,6 @@ footer,
   border-radius:9px;
   outline:none;
   font-size:15px;
-  box-sizing:border-box;
-}
-.custom-amount:focus{
-  border-color:#ef4444;
 }
 .selected-amount{
   margin-top:15px;
@@ -1360,12 +1356,6 @@ footer,
 .pay-option:hover{
   border-color:#ef4444;
   transform:translateY(-2px);
-}
-.pay-option.main{
-  grid-column:1/-1;
-  background:#ef4444;
-  border-color:#ef4444;
-  color:#fff;
 }
 .upi-display{
   margin-top:20px;
@@ -1483,32 +1473,52 @@ Choose your donation amount and make a UPI payment.
 </p>
 </div>
 <div class="payment-wrap">
-<!-- ================= PAYMENT BOX ================= -->
 <div class="payment-box fade">
 <h3>Choose Donation Amount</h3>
 <p>
 Select an amount or enter your own amount.
 </p>
 <div class="amount-grid">
-<button type="button" class="amount-btn" data-amount="100">
+<button
+type="button"
+class="amount-btn"
+data-amount="100">
 ₹100
 </button>
-<button type="button" class="amount-btn" data-amount="200">
+<button
+type="button"
+class="amount-btn"
+data-amount="200">
 ₹200
 </button>
-<button type="button" class="amount-btn" data-amount="500">
+<button
+type="button"
+class="amount-btn"
+data-amount="500">
 ₹500
 </button>
-<button type="button" class="amount-btn" data-amount="1000">
+<button
+type="button"
+class="amount-btn"
+data-amount="1000">
 ₹1,000
 </button>
-<button type="button" class="amount-btn" data-amount="2000">
+<button
+type="button"
+class="amount-btn"
+data-amount="2000">
 ₹2,000
 </button>
-<button type="button" class="amount-btn" data-amount="5000">
+<button
+type="button"
+class="amount-btn"
+data-amount="5000">
 ₹5,000
 </button>
-<button type="button" class="amount-btn" data-amount="10000">
+<button
+type="button"
+class="amount-btn"
+data-amount="10000">
 ₹10,000
 </button>
 </div>
@@ -1523,15 +1533,11 @@ inputmode="numeric"
 >
 <div class="selected-amount">
 Donation:
-<span id="selectedAmount">Select amount</span>
+<span id="selectedAmount">
+Select amount
+</span>
 </div>
 <div class="payment-options">
-<button
-type="button"
-class="pay-option main"
-onclick="payUPI()">
-UPI Payment →
-</button>
 <button
 type="button"
 class="pay-option"
@@ -1550,18 +1556,13 @@ class="pay-option"
 onclick="payPaytm()">
 Paytm
 </button>
-<button
-type="button"
-class="pay-option"
-onclick="payWhatsApp()">
-WhatsApp UPI
-</button>
 </div>
-<!-- ================= UPI ID COPY ================= -->
 <div class="upi-display">
 <strong>UPI ID</strong>
 <div class="upi-value-row">
-<div class="upi-value" id="upiIdText">
+<div
+class="upi-value"
+id="upiIdText">
 veer20noe@ybl
 </div>
 <button
@@ -1582,7 +1583,6 @@ id="paymentStatus"
 class="payment-status">
 </div>
 </div>
-<!-- ================= QR BOX ================= -->
 <div class="payment-box qr-box fade">
 <h3>Scan & Donate</h3>
 <p>
@@ -1615,286 +1615,252 @@ const paymentStatus =
 document.getElementById("paymentStatus");
 const copySuccess =
 document.getElementById("copySuccess");
-/* ================= AMOUNT ================= */
 function getAmount(){
-  const custom =
-    Number(customAmount.value);
-  if(custom > 0){
-    return custom;
-  }
-  if(
-    donationAmount !== null &&
-    donationAmount > 0
-  ){
-    return donationAmount;
-  }
-  return null;
+const custom =
+Number(customAmount.value);
+if(custom > 0){
+return custom;
+}
+if(
+donationAmount !== null &&
+donationAmount > 0
+){
+return donationAmount;
+}
+return null;
 }
 function setAmount(amount){
-  donationAmount =
-    Number(amount);
-  selectedAmount.textContent =
-    "₹" +
-    donationAmount.toLocaleString("en-IN");
+donationAmount =
+Number(amount);
+selectedAmount.textContent =
+"₹" +
+donationAmount.toLocaleString("en-IN");
+paymentStatus.style.display =
+"none";
 }
-/* ================= AMOUNT BUTTONS ================= */
 amountButtons.forEach(function(button){
-  button.addEventListener("click",function(){
-    amountButtons.forEach(function(btn){
-      btn.classList.remove("selected");
-    });
-    this.classList.add("selected");
-    customAmount.value = "";
-    setAmount(this.dataset.amount);
-    paymentStatus.style.display =
-      "none";
-  });
+button.addEventListener(
+"click",
+function(){
+amountButtons.forEach(
+function(btn){
+btn.classList.remove("selected");
 });
-/* ================= CUSTOM AMOUNT ================= */
-customAmount.addEventListener("input",function(){
-  amountButtons.forEach(function(btn){
-    btn.classList.remove("selected");
-  });
-  const amount =
-    Number(this.value);
-  if(amount > 0){
-    setAmount(amount);
-    paymentStatus.style.display =
-      "none";
-  }else{
-    donationAmount = null;
-    selectedAmount.textContent =
-      "Select amount";
-  }
+this.classList.add("selected");
+customAmount.value = "";
+setAmount(
+this.dataset.amount
+);
+}
+);
 });
-/* ================= VALIDATE AMOUNT ================= */
+customAmount.addEventListener(
+"input",
+function(){
+amountButtons.forEach(
+function(btn){
+btn.classList.remove("selected");
+});
+const amount =
+Number(this.value);
+if(amount > 0){
+donationAmount =
+amount;
+selectedAmount.textContent =
+"₹" +
+amount.toLocaleString("en-IN");
+paymentStatus.style.display =
+"none";
+}else{
+donationAmount =
+null;
+selectedAmount.textContent =
+"Select amount";
+}
+}
+);
 function requireAmount(){
-  const amount =
-    getAmount();
-  if(!amount || amount <= 0){
-    paymentStatus.style.display =
-      "block";
-    paymentStatus.innerHTML =
-      "<strong>Please select a donation amount.</strong>" +
-      "<br><br>" +
-      "Choose ₹100, ₹200, ₹500, ₹1,000, ₹2,000, ₹5,000, ₹10,000 " +
-      "or enter a custom amount.";
-    return null;
-  }
-  return amount;
+const amount =
+getAmount();
+if(!amount || amount <= 0){
+paymentStatus.style.display =
+"block";
+paymentStatus.innerHTML =
+"<strong>Please select a donation amount.</strong>" +
+"<br><br>" +
+"Choose an amount or enter a custom amount.";
+return null;
 }
-/* ================= BUILD UPI ================= */
+return amount;
+}
 function buildUPI(){
-  const amount =
-    requireAmount();
-  if(!amount){
-    return null;
-  }
-  return "upi://pay" +
-    "?pa=" +
-    encodeURIComponent(UPI_ID) +
-    "&pn=" +
-    encodeURIComponent(PAYEE_NAME) +
-    "&am=" +
-    encodeURIComponent(
-      amount.toFixed(2)
-    ) +
-    "&cu=INR";
+const amount =
+requireAmount();
+if(!amount){
+return null;
 }
-/* ================= OPEN APP ================= */
-function openApp(url,name){
-  if(!url){
-    return;
-  }
-  paymentStatus.style.display =
-    "none";
-  let appOpened = false;
-  function visibilityHandler(){
-    if(document.hidden){
-      appOpened = true;
-    }
-  }
-  document.addEventListener(
-    "visibilitychange",
-    visibilityHandler
-  );
-  /*
-   * First try direct navigation.
-   * This is more reliable than iframe
-   * handling on modern iOS browsers.
-   */
-  window.location.href = url;
-  setTimeout(function(){
-    document.removeEventListener(
-      "visibilitychange",
-      visibilityHandler
-    );
-    if(!appOpened){
-      showFallback(name);
-    }
-  },2200);
+return "upi://pay" +
+"?pa=" +
+encodeURIComponent(UPI_ID) +
+"&pn=" +
+encodeURIComponent(PAYEE_NAME) +
+"&am=" +
+encodeURIComponent(
+amount.toFixed(2)
+) +
+"&cu=INR";
 }
-/* ================= FALLBACK ================= */
-function showFallback(name){
-  paymentStatus.style.display =
-    "block";
-  paymentStatus.innerHTML =
-    "<strong>" +
-    name +
-    " could not be opened directly.</strong>" +
-    "<br><br>" +
-    "Use the UPI ID below or scan the QR code." +
-    "<br><br>" +
-    "<button type='button' " +
-    "class='status-copy' " +
-    "onclick='copyUPI()'>" +
-    "COPY UPI ID" +
-    "</button>";
+function openPayment(url,name){
+if(!url){
+return;
 }
-/* ================= UPI PAYMENT ================= */
-window.payUPI = function(){
-  const url =
-    buildUPI();
-  if(!url){
-    return;
-  }
-  openApp(
-    url,
-    "UPI Payment"
-  );
-};
+paymentStatus.style.display =
+"none";
+let appOpened = false;
+function visibilityHandler(){
+if(document.hidden){
+appOpened = true;
+}
+}
+document.addEventListener(
+"visibilitychange",
+visibilityHandler
+);
+/*
+  Try the requested app first.
+*/
+window.location.href =
+url;
+setTimeout(
+function(){
+document.removeEventListener(
+"visibilitychange",
+visibilityHandler
+);
+if(!appOpened){
+paymentStatus.style.display =
+"block";
+paymentStatus.innerHTML =
+"<strong>" +
+name +
+" could not be opened directly.</strong>" +
+"<br><br>" +
+"Please use the QR code or copy the UPI ID.";
+}
+},
+2200
+);
+}
 /* ================= PHONEPE ================= */
-window.payPhonePe = function(){
-  const params =
-    buildUPI();
-  if(!params){
-    return;
-  }
-  const query =
-    params.split("?")[1];
-  openApp(
-    "phonepe://pay?" + query,
-    "PhonePe"
-  );
+window.payPhonePe =
+function(){
+const upi =
+buildUPI();
+if(!upi){
+return;
+}
+const query =
+upi.split("?")[1];
+openPayment(
+"phonepe://pay?" + query,
+"PhonePe"
+);
 };
 /* ================= GOOGLE PAY ================= */
-window.payGPay = function(){
-  const params =
-    buildUPI();
-  if(!params){
-    return;
-  }
-  const query =
-    params.split("?")[1];
-  openApp(
-    "gpay://upi/pay?" + query,
-    "Google Pay"
-  );
+window.payGPay =
+function(){
+const upi =
+buildUPI();
+if(!upi){
+return;
+}
+const query =
+upi.split("?")[1];
+openPayment(
+"gpay://upi/pay?" + query,
+"Google Pay"
+);
 };
 /* ================= PAYTM ================= */
-window.payPaytm = function(){
-  const params =
-    buildUPI();
-  if(!params){
-    return;
-  }
-  const query =
-    params.split("?")[1];
-  const isAndroid =
-    /Android/i.test(
-      navigator.userAgent
-    );
-  if(isAndroid){
-    /*
-     * Android Paytm UPI
-     */
-    openApp(
-      "paytmmp://pay?" + query,
-      "Paytm"
-    );
-  }else{
-    /*
-     * iOS: use the standard UPI
-     * handler rather than an Android-only
-     * Paytm scheme.
-     */
-    openApp(
-      "upi://pay?" + query,
-      "Paytm / UPI"
-    );
-  }
-};
-/* ================= WHATSAPP UPI ================= */
-window.payWhatsApp = function(){
-  const amount =
-    requireAmount();
-  if(!amount){
-    return;
-  }
-  const query =
-    "pa=" +
-    encodeURIComponent(UPI_ID) +
-    "&pn=" +
-    encodeURIComponent(PAYEE_NAME) +
-    "&am=" +
-    encodeURIComponent(
-      amount.toFixed(2)
-    ) +
-    "&cu=INR";
-  /*
-   * Try WhatsApp UPI deep link.
-   * Whether WhatsApp accepts this scheme
-   * depends on the installed app/version
-   * and the operating system.
-   */
-  openApp(
-    "whatsapp://pay?" + query,
-    "WhatsApp UPI"
-  );
+window.payPaytm =
+function(){
+const upi =
+buildUPI();
+if(!upi){
+return;
+}
+const query =
+upi.split("?")[1];
+/*
+  Android:
+  Try Paytm's UPI app scheme.
+  iOS:
+  Use the standard UPI handoff rather than
+  incorrectly routing through WhatsApp.
+*/
+const isAndroid =
+/Android/i.test(
+navigator.userAgent
+);
+if(isAndroid){
+openPayment(
+"paytmmp://pay?" + query,
+"Paytm"
+);
+}else{
+openPayment(
+"upi://pay?" + query,
+"Paytm"
+);
+}
 };
 /* ================= COPY UPI ================= */
-window.copyUPI = async function(){
-  try{
-    if(
-      navigator.clipboard &&
-      window.isSecureContext
-    ){
-      await navigator.clipboard.writeText(
-        UPI_ID
-      );
-    }else{
-      const textarea =
-        document.createElement("textarea");
-      textarea.value =
-        UPI_ID;
-      textarea.style.position =
-        "fixed";
-      textarea.style.left =
-        "-9999px";
-      document.body.appendChild(
-        textarea
-      );
-      textarea.focus();
-      textarea.select();
-      document.execCommand("copy");
-      document.body.removeChild(
-        textarea
-      );
-    }
-    copySuccess.style.display =
-      "block";
-    setTimeout(function(){
-      copySuccess.style.display =
-        "none";
-    },2000);
-  }catch(error){
-    alert(
-      "UPI ID: " + UPI_ID
-    );
-  }
+window.copyUPI =
+async function(){
+try{
+if(
+navigator.clipboard &&
+window.isSecureContext
+){
+await navigator.clipboard.writeText(
+UPI_ID
+);
+}else{
+const textarea =
+document.createElement("textarea");
+textarea.value =
+UPI_ID;
+textarea.style.position =
+"fixed";
+textarea.style.left =
+"-9999px";
+document.body.appendChild(
+textarea
+);
+textarea.focus();
+textarea.select();
+document.execCommand("copy");
+document.body.removeChild(
+textarea
+);
+}
+copySuccess.style.display =
+"block";
+setTimeout(
+function(){
+copySuccess.style.display =
+"none";
+},
+2000
+);
+}catch(error){
+alert(
+"UPI ID: " + UPI_ID
+);
+}
 };
 })();
-</script>
+</script>  
   
 <!-- ================= UPDATES ================= -->
 
