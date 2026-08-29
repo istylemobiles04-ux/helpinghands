@@ -1785,36 +1785,60 @@ openPayment(
 function payPaytm(){
 
   const upi = buildUPI();
-
-  if(!upi){
-    return;
-  }
-
-  const isIOS =
-    /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-  if(isIOS){
-
-    paymentStatus.style.display = "block";
-
-    paymentStatus.innerHTML =
-      "<strong>Paytm</strong>" +
-      "<br><br>" +
-      "Please open Paytm and use the UPI ID below." +
-      "<br><br>" +
-      "<button type='button' onclick='copyUPI()'>" +
-      "COPY UPI ID" +
-      "</button>";
-
-    return;
-  }
+  if(!upi) return;
 
   const query = upi.split("?")[1];
 
-  openPayment(
-    "paytmmp://pay?" + query,
-    "Paytm"
-  );
+  paymentStatus.style.display = "none";
+
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  const paytmURL = "paytmmp://pay?" + query;
+
+  const fallbackURL = "upi://pay?" + query;
+
+  let opened = false;
+
+  const onVisibility = () => {
+    if(document.hidden){
+      opened = true;
+    }
+  };
+
+  document.addEventListener("visibilitychange", onVisibility);
+
+  // First try Paytm specifically
+  window.location.href = paytmURL;
+
+  setTimeout(() => {
+
+    if(!opened){
+
+      // iOS: do NOT send to generic UPI, because that
+      // can open WhatsApp/another registered UPI app.
+      if(isIOS){
+
+        paymentStatus.style.display = "block";
+        paymentStatus.innerHTML =
+          "<strong>Paytm couldn't be opened.</strong><br><br>" +
+          "Open Paytm manually and use UPI ID:<br><br>" +
+          "<strong>" + UPI_ID + "</strong>";
+
+      }else{
+
+        // Android fallback
+        window.location.href = fallbackURL;
+
+      }
+
+    }
+
+    document.removeEventListener(
+      "visibilitychange",
+      onVisibility
+    );
+
+  }, 1200);
 
 }
 /* ================= COPY UPI ================= */
