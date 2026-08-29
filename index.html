@@ -2,56 +2,197 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#07111f">
-<title>Helping Hearts — Nepal Flood Relief</title>
-
+<title>Helping Hearts | Nepal Flood Relief</title>
 <style>
-:root{
-  --dark:#07111f;
-  --dark2:#0d1b2e;
-  --red:#ef4444;
-  --red2:#dc2626;
-  --text:#101828;
-  --muted:#667085;
-  --bg:#f5f7fa;
-  --white:#fff;
-  --border:#e4e9ef;
-  --radius:22px;
-  --shadow:0 18px 55px rgba(16,24,40,.10);
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
-
-*{margin:0;padding:0;box-sizing:border-box}
-
-html{scroll-behavior:smooth}
-
+html{
+  scroll-behavior:smooth;
+}
 body{
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f6f8fb;
+  color:#111827;
   overflow-x:hidden;
 }
-
 img{
   width:100%;
   height:100%;
-  display:block;
   object-fit:cover;
+  display:block;
 }
-
-a{text-decoration:none;color:inherit}
-button,input{font:inherit}
-
+a{
+  text-decoration:none;
+  color:inherit;
+}
+button{
+  font-family:inherit;
+  cursor:pointer;
+}
 .container{
-  width:min(1180px,calc(100% - 32px));
+  width:100%;
+  max-width:1150px;
   margin:auto;
+  padding-left:18px;
+  padding-right:18px;
 }
-
 section{
-  padding:90px 0;
-  overflow:hidden;
+  width:100%;
+  padding:80px 0;
+  scroll-margin-top:72px;
 }
-
+/* NAVIGATION */
+.navbar{
+  width:100%;
+  height:72px;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:999;
+  background:rgba(5,13,25,.96);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav{
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  color:white;
+  font-size:22px;
+  font-weight:900;
+}
+.logo span{
+  color:#ff5555;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+.nav-links a{
+  color:#d8e0eb;
+  font-size:14px;
+  font-weight:700;
+}
+.nav-links a:hover{
+  color:white;
+}
+.nav-donate{
+  background:#ef4444;
+  color:white!important;
+  padding:10px 17px;
+  border-radius:9px;
+}
+.menu{
+  display:none;
+  color:white;
+  font-size:27px;
+}
+/* HERO */
+.hero{
+  width:100%;
+  min-height:720px;
+  padding-top:72px;
+  display:flex;
+  align-items:center;
+  background:
+    linear-gradient(90deg,rgba(3,10,20,.94),rgba(3,10,20,.65),rgba(3,10,20,.28)),
+    url("home.jpg") center center/cover no-repeat;
+  color:white;
+}
+.hero-content{
+  max-width:720px;
+}
+.badge{
+  display:inline-block;
+  padding:8px 14px;
+  border:1px solid rgba(255,150,150,.35);
+  background:rgba(255,70,70,.12);
+  color:#ffb0b0;
+  border-radius:30px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.5px;
+}
+.hero h1{
+  margin-top:22px;
+  font-size:clamp(48px,8vw,86px);
+  line-height:.95;
+  letter-spacing:-4px;
+}
+.hero h1 span{
+  color:#ff6262;
+}
+.hero p{
+  margin-top:23px;
+  max-width:650px;
+  color:#d4dce7;
+  font-size:18px;
+  line-height:1.7;
+}
+.buttons{
+  display:flex;
+  gap:12px;
+  margin-top:30px;
+  flex-wrap:wrap;
+}
+.btn{
+  border:0;
+  padding:14px 22px;
+  border-radius:10px;
+  font-weight:900;
+  font-size:14px;
+}
+.btn-red{
+  background:#ef4444;
+  color:white;
+}
+.btn-red:hover{
+  background:#dc2626;
+}
+.btn-outline{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.3);
+  color:white;
+}
+/* STATS */
+.stats{
+  margin-top:-45px;
+  position:relative;
+  z-index:5;
+}
+.stats-box{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 15px 45px rgba(0,0,0,.09);
+}
+.stat{
+  text-align:center;
+  padding:27px 15px;
+  border-right:1px solid #e6eaf0;
+}
+.stat:last-child{
+  border-right:0;
+}
+.stat strong{
+  display:block;
+  font-size:24px;
+  margin-bottom:5px;
+}
+.stat small{
+  color:#667085;
+}
+/* COMMON */
 .kicker{
   color:#e04444;
   font-size:12px;
@@ -59,1274 +200,840 @@ section{
   letter-spacing:2px;
   text-transform:uppercase;
 }
-
-.title{
-  margin:12px 0 18px;
-  font-size:clamp(34px,5vw,58px);
+.heading{
+  margin-top:10px;
+  margin-bottom:17px;
+  font-size:clamp(34px,5vw,57px);
   line-height:1.03;
-  letter-spacing:-2.5px;
+  letter-spacing:-2px;
 }
-
-.lead{
-  color:var(--muted);
-  font-size:16px;
+.text{
+  color:#667085;
   line-height:1.75;
+  font-size:16px;
 }
-
-.center{text-align:center}
-.section-head{max-width:760px;margin:auto}
-
-
-/* NAV */
-
-.navbar{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  height:72px;
-  z-index:1000;
-  background:rgba(4,12,23,.90);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.nav{
-  height:72px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  color:#fff;
-  font-size:22px;
-  font-weight:900;
-}
-
-.logo span{color:#ff6666}
-
-.nav-links{
-  display:flex;
-  gap:24px;
-  align-items:center;
-}
-
-.nav-links a{
-  color:#d8e0eb;
-  font-size:14px;
-  font-weight:750;
-  transition:.25s;
-}
-
-.nav-links a:hover{color:#fff}
-
-.nav-donate{
-  background:var(--red);
-  padding:10px 15px;
-  border-radius:10px;
-  color:#fff!important;
-}
-
-.menu{
-  display:none;
-  color:#fff;
-  font-size:25px;
-  cursor:pointer;
-}
-
-
-/* HERO */
-
-.hero{
-  min-height:760px;
-  padding-top:72px;
-  display:flex;
-  align-items:center;
-  color:#fff;
-  background:
-    linear-gradient(90deg,rgba(2,7,16,.96),rgba(2,7,16,.68),rgba(2,7,16,.20)),
-    url("https://commons.wikimedia.org/wiki/Special:FilePath/Flood%20in%20nepal%20%28terai%20region%20at%20rainy%20season%29%20%2840%29.jpg")
-    center/cover no-repeat;
-}
-
-.hero-content{
-  max-width:720px;
-  animation:heroIn 1s cubic-bezier(.2,.8,.2,1);
-}
-
-@keyframes heroIn{
-  from{opacity:0;transform:translateY(35px)}
-  to{opacity:1;transform:none}
-}
-
-.badge{
-  display:inline-block;
-  padding:8px 13px;
-  border-radius:999px;
-  background:rgba(255,80,80,.14);
-  border:1px solid rgba(255,150,150,.3);
-  color:#ffb0b0;
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:1.5px;
-}
-
-.hero h1{
-  margin:22px 0 20px;
-  font-size:clamp(48px,8vw,88px);
-  line-height:.95;
-  letter-spacing:-5px;
-}
-
-.hero h1 span{color:#ff6868}
-
-.hero p{
-  max-width:670px;
-  color:#d8e0eb;
-  font-size:18px;
-  line-height:1.7;
-}
-
-.actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:30px;
-}
-
-.btn{
-  border:0;
-  border-radius:11px;
-  padding:14px 22px;
-  cursor:pointer;
-  font-weight:900;
-  transition:.25s;
-}
-
-.btn-red{
-  background:var(--red);
-  color:#fff;
-}
-
-.btn-red:hover{
-  background:var(--red2);
-  transform:translateY(-3px);
-  box-shadow:0 14px 30px rgba(239,68,68,.25);
-}
-
-.btn-dark{
-  background:#101828;
-  color:#fff;
-}
-
-.btn-light{
-  color:#fff;
-  background:rgba(255,255,255,.09);
-  border:1px solid rgba(255,255,255,.25);
-}
-
-
-/* STATS */
-
-.stats{
-  margin-top:-45px;
-  position:relative;
-  z-index:5;
-}
-
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  background:#fff;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-}
-
-.stat{
-  padding:27px 15px;
-  text-align:center;
-  border-right:1px solid var(--border);
-}
-
-.stat:last-child{border:0}
-
-.stat strong{
-  display:block;
-  font-size:25px;
-}
-
-.stat span{
-  color:var(--muted);
-  font-size:13px;
-}
-
-
-/* GENERAL IMAGE */
-
-.image-box{
-  overflow:hidden;
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-}
-
-.image-box img{transition:.8s}
-
-.image-box:hover img{transform:scale(1.05)}
-
-
 /* ABOUT */
-
 .about-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:55px;
   align-items:center;
 }
-
-.about-image{height:440px}
-
-.points{
+.about-image{
+  height:440px;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 15px 45px rgba(0,0,0,.09);
+}
+.check-list{
+  margin-top:25px;
   display:grid;
   gap:15px;
-  margin-top:25px;
 }
-
-.point{
+.check{
   display:flex;
   gap:12px;
+  align-items:flex-start;
 }
-
-.tick{
-  width:30px;
-  height:30px;
-  min-width:30px;
-  border-radius:50%;
+.check-icon{
+  width:29px;
+  height:29px;
+  min-width:29px;
   display:grid;
   place-items:center;
-  background:#eaf8ef;
-  color:#168b45;
+  border-radius:50%;
+  background:#e9f8ef;
+  color:#15803d;
   font-weight:900;
 }
-
-
 /* EMERGENCY */
-
 .dark{
-  background:var(--dark);
-  color:#fff;
+  background:#06101d;
+  color:white;
 }
-
-.dark .lead{color:#acb8ca}
-
+.dark .text{
+  color:#aeb9c9;
+}
 .emergency-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:55px;
+  gap:50px;
   align-items:center;
 }
-
-.emergency-image{height:450px}
-
+.emergency-image{
+  height:430px;
+  border-radius:22px;
+  overflow:hidden;
+}
 .emergency-list{
   display:grid;
-  gap:13px;
+  gap:12px;
   margin-top:25px;
 }
-
 .emergency-item{
-  background:#101d31;
-  border:1px solid #263750;
-  border-radius:15px;
   padding:17px;
-  transition:.3s;
+  border-radius:15px;
+  background:#0e1c2e;
+  border:1px solid #24354d;
 }
-
-.emergency-item:hover{
-  transform:translateX(6px);
-  border-color:#ef6464;
-}
-
-.emergency-item span{
+.emergency-item strong{
   display:block;
-  color:#aab7c9;
-  font-size:13px;
-  margin-top:4px;
+  margin-bottom:5px;
 }
-
-
+.emergency-item span{
+  color:#aab7c8;
+  font-size:14px;
+}
 /* RELIEF */
-
 .relief-grid{
+  margin-top:45px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:18px;
-  margin-top:45px;
 }
-
 .card{
-  background:#fff;
-  border:1px solid var(--border);
+  background:white;
+  border:1px solid #e4e8ee;
   border-radius:20px;
   overflow:hidden;
-  box-shadow:0 10px 35px rgba(16,24,40,.06);
-  transition:.35s;
+  box-shadow:0 7px 25px rgba(0,0,0,.05);
 }
-
-.card:hover{
-  transform:translateY(-7px);
-  box-shadow:var(--shadow);
-}
-
 .card-image{
-  height:220px;
-  overflow:hidden;
+  height:235px;
 }
-
-.card-image img{transition:.7s}
-
-.card:hover .card-image img{transform:scale(1.07)}
-
-.card-body{padding:21px}
-
-.card-body h3{margin-bottom:7px}
-
+.card-body{
+  padding:21px;
+}
+.card-body h3{
+  margin-bottom:8px;
+}
 .card-body p{
-  color:var(--muted);
+  color:#667085;
   font-size:14px;
-  line-height:1.65;
+  line-height:1.7;
 }
-
-
 /* DONATE */
-
-.donate-section{background:#edf1f5}
-
+.donate-area{
+  background:#eef2f6;
+}
 .donate-grid{
+  margin-top:45px;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:22px;
-  margin-top:45px;
 }
-
 .donate-box{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:22px;
+  background:white;
   padding:30px;
-  box-shadow:0 12px 40px rgba(16,24,40,.06);
+  border-radius:22px;
+  border:1px solid #e0e5eb;
+  box-shadow:0 12px 35px rgba(0,0,0,.06);
 }
-
 .amounts{
+  margin:20px 0 13px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:9px;
-  margin:22px 0 12px;
 }
-
 .amount{
-  border:1px solid #d5dce6;
-  background:#fff;
+  padding:12px 5px;
+  background:white;
+  border:1px solid #d6dce5;
   border-radius:9px;
-  padding:12px;
-  cursor:pointer;
   font-weight:900;
 }
-
 .amount.active,
 .amount:hover{
+  background:#fff0f0;
   border-color:#ef4444;
-  background:#fff1f1;
-  color:#d92d20;
+  color:#dc2626;
 }
-
 .input{
   width:100%;
-  border:1px solid #d5dce6;
+  padding:14px;
+  border:1px solid #d6dce5;
   border-radius:10px;
-  padding:13px;
   outline:none;
 }
-
-.input:focus{border-color:#ef4444}
-
+.input:focus{
+  border-color:#ef4444;
+}
 .full{
   width:100%;
   margin-top:12px;
 }
-
 .upi{
-  margin-top:20px;
+  margin-top:18px;
+  padding:16px;
   background:#f5f7f9;
   border-radius:14px;
-  padding:16px;
 }
-
 .upi-row{
   display:flex;
-  gap:7px;
+  gap:8px;
   margin-top:8px;
 }
-
 .upi-id{
-  min-width:0;
   flex:1;
-  background:#fff;
-  border:1px solid #e0e5eb;
+  min-width:0;
+  background:white;
+  border:1px solid #dfe4ea;
   border-radius:8px;
-  padding:11px;
+  padding:12px;
   font-size:13px;
   font-weight:800;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
 }
-
 .copy{
   border:0;
   border-radius:8px;
   padding:0 14px;
-  background:#101828;
-  color:#fff;
-  font-weight:900;
-  cursor:pointer;
+  background:#111827;
+  color:white;
+  font-weight:800;
 }
-
-.pay-apps{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:9px;
-  margin-top:14px;
-}
-
-.pay-app{
-  border:1px solid #d8dee7;
-  border-radius:11px;
-  background:#fff;
-  padding:12px 5px;
-  cursor:pointer;
-  font-weight:900;
-  transition:.2s;
-}
-
-.pay-app:hover{
-  transform:translateY(-2px);
-  border-color:#111827;
-}
-
 .qr{
   height:310px;
-  margin-top:20px;
-  border:2px dashed #d5dce6;
-  border-radius:17px;
+  margin-top:18px;
+  border:2px dashed #d6dce5;
+  border-radius:16px;
   display:grid;
   place-items:center;
   background:#fafbfc;
 }
-
-.qr-placeholder{
-  width:180px;
-  height:180px;
+.qr-box{
+  width:175px;
+  height:175px;
   border:7px solid #111;
   display:grid;
   place-items:center;
   text-align:center;
+  background:white;
   font-weight:900;
 }
-
-
 /* GALLERY */
-
-.gallery{
-  display:grid;
-  grid-template-columns:1.35fr .65fr;
-  gap:18px;
+.gallery-grid{
   margin-top:45px;
-}
-
-.gallery-main{height:520px}
-
-.gallery-side{
   display:grid;
-  grid-template-rows:1fr 1fr;
+  grid-template-columns:1fr 1fr;
   gap:18px;
 }
-
-.gallery-side .image-box{height:251px}
-
-
+.gallery-photo{
+  height:430px;
+  border-radius:22px;
+  overflow:hidden;
+}
+.gallery-photo-small{
+  height:430px;
+  border-radius:22px;
+  overflow:hidden;
+}
 /* UPDATES */
-
-.updates{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
+.updates-grid{
   margin-top:45px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
 }
-
-
-/* REVEAL */
-
-.reveal{
-  opacity:0;
-  transform:translateY(30px);
-  transition:.8s cubic-bezier(.2,.8,.2,1);
+.update-image{
+  height:280px;
 }
-
-.reveal.left{
-  transform:translateX(-35px);
+.update-body{
+  padding:22px;
 }
-
-.reveal.right{
-  transform:translateX(35px);
+.update-date{
+  color:#e04444;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1px;
 }
-
-.reveal.show{
-  opacity:1;
-  transform:none;
+.update-body h3{
+  margin:7px 0;
 }
-
-
-/* FOOTER */
-
-footer{
-  background:#040a13;
-  color:#aab5c5;
+.update-body p{
+  color:#667085;
+  font-size:14px;
+  line-height:1.7;
+}
+/* CONTACT */
+.contact{
+  background:#07111f;
+  color:white;
   text-align:center;
-  padding:45px 0;
 }
-
+.contact .text{
+  color:#aeb9c9;
+}
+.contact-box{
+  max-width:700px;
+  margin:auto;
+}
+footer{
+  padding:35px 0;
+  background:#040a12;
+  color:#9ca9bb;
+  text-align:center;
+}
 footer strong{
-  color:#fff;
+  color:white;
   font-size:19px;
 }
-
-
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  z-index:2000;
+  inset:0;
+  padding:18px;
+  background:rgba(0,0,0,.75);
+  align-items:center;
+  justify-content:center;
+}
+.modal.show{
+  display:flex;
+}
+.modal-content{
+  width:min(430px,100%);
+  background:white;
+  color:#111827;
+  padding:28px;
+  border-radius:20px;
+}
+.close{
+  float:right;
+  border:0;
+  background:none;
+  font-size:28px;
+}
+.modal-content h2{
+  margin-bottom:8px;
+}
 /* MOBILE */
-
 @media(max-width:850px){
-
-  section{padding:70px 0}
-
   .nav-links{
     display:none;
     position:absolute;
     top:72px;
     left:0;
-    right:0;
+    width:100%;
     padding:20px;
     background:#07111f;
     flex-direction:column;
-    align-items:stretch;
-    gap:5px;
+    gap:18px;
   }
-
-  .nav-links.open{display:flex}
-
-  .nav-links a{
-    padding:12px;
-    text-align:center;
+  .nav-links.open{
+    display:flex;
   }
-
-  .menu{display:block}
-
-  .hero{min-height:700px}
-
-  .stats-grid{grid-template-columns:1fr}
-
+  .menu{
+    display:block;
+  }
+  .stats-box{
+    grid-template-columns:1fr;
+  }
   .stat{
     border-right:0;
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid #e6eaf0;
   }
-
-  .stat:last-child{border-bottom:0}
-
+  .stat:last-child{
+    border-bottom:0;
+  }
   .about-grid,
   .emergency-grid,
   .donate-grid{
     grid-template-columns:1fr;
   }
-
-  .relief-grid,
-  .updates{
+  .relief-grid{
     grid-template-columns:1fr;
   }
-
-  .gallery{
+  .gallery-grid,
+  .updates-grid{
     grid-template-columns:1fr;
   }
-
-  .gallery-main{height:350px}
-
-  .gallery-side{
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:none;
+  .gallery-photo,
+  .gallery-photo-small{
+    height:320px;
   }
-
-  .gallery-side .image-box{height:200px}
 }
-
 @media(max-width:500px){
-
-  .container{
-    width:calc(100% - 24px);
+  section{
+    padding:65px 0;
   }
-
+  .container{
+    padding-left:13px;
+    padding-right:13px;
+  }
+  .hero{
+    min-height:680px;
+  }
   .hero h1{
+    font-size:52px;
     letter-spacing:-3px;
   }
-
-  .hero p{font-size:16px}
-
-  .actions .btn{
-    width:100%;
-    text-align:center;
+  .hero p{
+    font-size:16px;
   }
-
+  .buttons .btn{
+    width:100%;
+  }
   .about-image,
   .emergency-image{
     height:300px;
   }
-
   .amounts{
     grid-template-columns:repeat(2,1fr);
   }
-
-  .pay-apps{
-    grid-template-columns:1fr;
+  .qr{
+    height:270px;
   }
-
-  .gallery-main{height:280px}
-
-  .gallery-side{
-    grid-template-columns:1fr;
-  }
-
-  .gallery-side .image-box{
-    height:220px;
+  .gallery-photo,
+  .gallery-photo-small{
+    height:270px;
   }
 }
 </style>
 </head>
-
 <body>
-
-<!-- NAV -->
+<!-- NAVIGATION -->
 <nav class="navbar">
   <div class="container nav">
-
-    <a href="#home" class="logo">
-      Helping<span>Hearts</span>
-    </a>
-
-    <div class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#emergency">Emergency</a>
-      <a href="#relief">Relief</a>
-      <a href="#donate" class="nav-donate">Donate</a>
-      <a href="#updates">Updates</a>
-    </div>
-
-    <div class="menu" onclick="toggleMenu()">☰</div>
-
+<a href="#home" class="logo">
+  Helping<span>Hearts</span>
+</a>
+<div class="nav-links" id="navLinks">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#emergency">Emergency</a>
+  <a href="#relief">Relief</a>
+  <a href="#donate" class="nav-donate">Donate</a>
+  <a href="#updates">Updates</a>
+</div>
+<div class="menu" onclick="toggleMenu()">☰</div>
   </div>
 </nav>
-
-
 <!-- HOME -->
 <header class="hero" id="home">
   <div class="container">
-    <div class="hero-content">
-
-      <div class="badge">NEPAL FLOOD RELIEF</div>
-
-      <h1>
-        Small Help.<br>
-        <span>Big Hope.</span>
-      </h1>
-
-      <p>
-        Stand with communities affected by flooding in Nepal.
-        Support emergency needs, humanitarian assistance and
-        long-term recovery.
-      </p>
-
-      <div class="actions">
-        <a href="#donate" class="btn btn-red">Donate Now →</a>
-        <a href="#about" class="btn btn-light">Our Mission</a>
-      </div>
-
-    </div>
+<div class="hero-content">
+  <div class="badge">
+    NEPAL FLOOD RELIEF • 2026
   </div>
-</header>
-
-
-<!-- STATS -->
-<div class="stats">
-  <div class="container stats-grid">
-
-    <div class="stat">
-      <strong>Emergency</strong>
-      <span>Flood response</span>
-    </div>
-
-    <div class="stat">
-      <strong>Essentials</strong>
-      <span>Food & water</span>
-    </div>
-
-    <div class="stat">
-      <strong>Recovery</strong>
-      <span>Community support</span>
-    </div>
-
+  <h1>
+    Small Help.<br>
+    <span>Big Hope.</span>
+  </h1>
+  <p>
+    Stand with communities affected by flooding in Nepal.
+    Support emergency relief, essential supplies and
+    recovery assistance.
+  </p>
+  <div class="buttons">
+    <a href="#donate" class="btn btn-red">
+      Donate Now →
+    </a>
+    <a href="#about" class="btn btn-outline">
+      Learn More
+    </a>
   </div>
 </div>
-
-
+  </div>
+</header>
+<!-- STATS -->
+<div class="stats">
+  <div class="container stats-box">
+<div class="stat">
+  <strong>Emergency</strong>
+  <small>Flood response</small>
+</div>
+<div class="stat">
+  <strong>Essentials</strong>
+  <small>Food & water</small>
+</div>
+<div class="stat">
+  <strong>Recovery</strong>
+  <small>Community support</small>
+</div>
+  </div>
+</div>
 <!-- ABOUT -->
 <section id="about">
   <div class="container about-grid">
-
-    <div class="image-box about-image reveal left">
-      <img
-        src="https://commons.wikimedia.org/wiki/Special:FilePath/Flood%20in%20nepal%20%28terai%20region%20at%20rainy%20season%29%20%2828%29.jpg"
-        alt="Flood in Nepal"
-        loading="lazy">
-    </div>
-
-    <div class="reveal right">
-
-      <div class="kicker">Our Mission</div>
-
-      <h2 class="title">
-        When disaster strikes,
-        humanity comes first.
-      </h2>
-
-      <p class="lead">
-        Flooding can damage homes, roads and access to
-        essential services. Relief efforts focus on helping
-        affected communities through emergency response
-        and recovery.
-      </p>
-
-      <div class="points">
-
-        <div class="point">
-          <div class="tick">✓</div>
-          <div>
-            <b>Emergency food</b><br>
-            <span class="lead">Essential food and household supplies.</span>
-          </div>
-        </div>
-
-        <div class="point">
-          <div class="tick">✓</div>
-          <div>
-            <b>Safe water</b><br>
-            <span class="lead">Clean water and hygiene assistance.</span>
-          </div>
-        </div>
-
-        <div class="point">
-          <div class="tick">✓</div>
-          <div>
-            <b>Emergency shelter</b><br>
-            <span class="lead">Temporary shelter and recovery support.</span>
-          </div>
-        </div>
-
+<div class="about-image">
+  <img src="about.jpg" alt="Nepal relief">
+</div>
+<div>
+  <div class="kicker">
+    OUR MISSION
+  </div>
+  <h2 class="heading">
+    When disaster strikes,
+    humanity comes first.
+  </h2>
+  <p class="text">
+    Flood emergencies can affect homes, roads,
+    livelihoods and access to essential supplies.
+    Relief efforts can provide immediate assistance
+    while communities begin their recovery.
+  </p>
+  <div class="check-list">
+    <div class="check">
+      <div class="check-icon">✓</div>
+      <div>
+        <strong>Emergency food</strong>
+        <p class="text">Basic food and household necessities.</p>
       </div>
-
+    </div>
+    <div class="check">
+      <div class="check-icon">✓</div>
+      <div>
+        <strong>Clean water</strong>
+        <p class="text">Water and hygiene assistance.</p>
+      </div>
+    </div>
+    <div class="check">
+      <div class="check-icon">✓</div>
+      <div>
+        <strong>Emergency shelter</strong>
+        <p class="text">Temporary shelter for displaced families.</p>
+      </div>
     </div>
   </div>
+</div>
+  </div>
 </section>
-
-
 <!-- EMERGENCY -->
 <section class="dark" id="emergency">
   <div class="container emergency-grid">
-
-    <div class="reveal left">
-
-      <div class="kicker">Emergency Appeal</div>
-
-      <h2 class="title">
-        Help with the essentials first.
-      </h2>
-
-      <p class="lead">
-        Emergency priorities can include rescue,
-        evacuation, food, water, shelter and medical
-        assistance.
-      </p>
-
-      <div class="emergency-list">
-
-        <div class="emergency-item">
-          <b>Food & household essentials</b>
-          <span>Basic supplies for affected families.</span>
-        </div>
-
-        <div class="emergency-item">
-          <b>Water & sanitation</b>
-          <span>Clean water and hygiene assistance.</span>
-        </div>
-
-        <div class="emergency-item">
-          <b>Shelter & recovery</b>
-          <span>Emergency shelter and rebuilding support.</span>
-        </div>
-
-      </div>
-
+<div>
+  <div class="kicker">
+    EMERGENCY RELIEF
+  </div>
+  <h2 class="heading">
+    Help with the essentials first.
+  </h2>
+  <p class="text">
+    During a flood emergency, affected communities
+    may need urgent support including food, water,
+    shelter and basic supplies.
+  </p>
+  <div class="emergency-list">
+    <div class="emergency-item">
+      <strong>Food & Essentials</strong>
+      <span>Emergency food packages and basic supplies.</span>
     </div>
-
-    <div class="image-box emergency-image reveal right">
-      <img
-        src="https://commons.wikimedia.org/wiki/Special:FilePath/U%20S%20Air%20Force%20and%20Nepali%20Army%20exchange%20search%20and%20rescue%20knowledge%20during%20Pacific%20Angel%2024-2%20%288667836%29.jpg"
-        alt="Search and rescue training in Nepal"
-        loading="lazy">
+    <div class="emergency-item">
+      <strong>Water & Hygiene</strong>
+      <span>Clean water and hygiene assistance.</span>
     </div>
-
+    <div class="emergency-item">
+      <strong>Shelter</strong>
+      <span>Temporary shelter and essential support.</span>
+    </div>
+  </div>
+</div>
+<div class="emergency-image">
+  <img src="emergency.jpg" alt="Emergency flood response">
+</div>
   </div>
 </section>
-
-
 <!-- RELIEF -->
 <section id="relief">
   <div class="container">
-
-    <div class="section-head center reveal">
-      <div class="kicker">Where Help Goes</div>
-      <h2 class="title">Support the essentials.</h2>
-      <p class="lead">
-        Different relief areas are shown separately so every
-        section has its own visual identity.
+<div style="max-width:750px;margin:auto;text-align:center">
+  <div class="kicker">
+    RELIEF PRIORITIES
+  </div>
+  <h2 class="heading">
+    Support the essentials.
+  </h2>
+  <p class="text">
+    Relief assistance can focus on immediate necessities
+    for people and communities affected by flooding.
+  </p>
+</div>
+<div class="relief-grid">
+  <article class="card">
+    <div class="card-image">
+      <img src="food.jpg" alt="Food relief">
+    </div>
+    <div class="card-body">
+      <h3>Food Support</h3>
+      <p>
+        Emergency food and household necessities
+        for affected families.
       </p>
     </div>
-
-    <div class="relief-grid">
-
-      <article class="card reveal">
-        <div class="card-image">
-          <img
-            src="https://commons.wikimedia.org/wiki/Special:FilePath/Flood%20in%20Biratnagar%202019.jpg"
-            alt="Flood affected area in Nepal"
-            loading="lazy">
-        </div>
-        <div class="card-body">
-          <h3>Food & Essentials</h3>
-          <p>
-            Emergency food packages and household
-            necessities for affected families.
-          </p>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-image">
-          <img
-            src="https://commons.wikimedia.org/wiki/Special:FilePath/U%20S%20Air%20Force%20and%20Nepali%20Army%20exchange%20search%20and%20rescue%20knowledge%20during%20Pacific%20Angel%2024-2%20%288667841%29.jpg"
-            alt="Nepal disaster response team"
-            loading="lazy">
-        </div>
-        <div class="card-body">
-          <h3>Water & Safety</h3>
-          <p>
-            Support for safe water, sanitation and
-            emergency assistance.
-          </p>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-image">
-          <img
-            src="https://commons.wikimedia.org/wiki/Special:FilePath/U%20S%20Air%20Force%20and%20Nepali%20Army%20medical%20experts%20enhance%20life-saving%20skills%20during%20Pacific%20Angel%2024-2%20%288662178%29.jpg"
-            alt="Nepal humanitarian response"
-            loading="lazy">
-        </div>
-        <div class="card-body">
-          <h3>Medical Support</h3>
-          <p>
-            Emergency medical response and support
-            for vulnerable communities.
-          </p>
-        </div>
-      </article>
-
+  </article>
+  <article class="card">
+    <div class="card-image">
+      <img src="water.jpg" alt="Water support">
     </div>
+    <div class="card-body">
+      <h3>Clean Water</h3>
+      <p>
+        Water and hygiene supplies during
+        emergency conditions.
+      </p>
+    </div>
+  </article>
+  <article class="card">
+    <div class="card-image">
+      <img src="shelter.jpg" alt="Emergency shelter">
+    </div>
+    <div class="card-body">
+      <h3>Emergency Shelter</h3>
+      <p>
+        Temporary shelter and basic support
+        for displaced families.
+      </p>
+    </div>
+  </article>
+</div>
   </div>
 </section>
-
-
 <!-- DONATE -->
-<section class="donate-section" id="donate">
+<section class="donate-area" id="donate">
   <div class="container">
-
-    <div class="section-head center reveal">
-      <div class="kicker">Make A Difference</div>
-      <h2 class="title">Donate Directly</h2>
-      <p class="lead">
-        Replace the placeholder UPI ID below with the
-        authorized and verified donation account.
-      </p>
+<div style="max-width:760px;margin:auto;text-align:center">
+  <div class="kicker">
+    MAKE A DIFFERENCE
+  </div>
+  <h2 class="heading">
+    Support Flood Relief
+  </h2>
+  <p class="text">
+    Use the official verified payment details of the
+    organization receiving donations before publishing
+    this page.
+  </p>
+</div>
+<div class="donate-grid">
+  <div class="donate-box">
+    <h3>Choose Donation Amount</h3>
+    <p class="text">
+      Select an amount or enter your own.
+    </p>
+    <div class="amounts">
+      <button class="amount" onclick="chooseAmount(100,this)">
+        ₹100
+      </button>
+      <button class="amount" onclick="chooseAmount(500,this)">
+        ₹500
+      </button>
+      <button class="amount" onclick="chooseAmount(1000,this)">
+        ₹1,000
+      </button>
+      <button class="amount" onclick="chooseAmount(2000,this)">
+        ₹2,000
+      </button>
+      <button class="amount" onclick="chooseAmount(5000,this)">
+        ₹5,000
+      </button>
+      <button class="amount" onclick="chooseAmount(10000,this)">
+        ₹10,000
+      </button>
     </div>
-
-    <div class="donate-grid">
-
-      <div class="donate-box reveal left">
-
-        <h3>Choose an amount</h3>
-
-        <div class="amounts">
-
-          <button class="amount" onclick="setAmount(100,this)">₹100</button>
-          <button class="amount" onclick="setAmount(500,this)">₹500</button>
-          <button class="amount" onclick="setAmount(1000,this)">₹1,000</button>
-          <button class="amount" onclick="setAmount(2000,this)">₹2,000</button>
-          <button class="amount" onclick="setAmount(5000,this)">₹5,000</button>
-          <button class="amount" onclick="setAmount(10000,this)">₹10,000</button>
-
+    <input
+      id="customAmount"
+      class="input"
+      type="number"
+      min="1"
+      placeholder="Enter custom amount ₹"
+    >
+    <button
+      class="btn btn-red full"
+      onclick="openDonate()">
+      Continue
+    </button>
+    <div class="upi">
+      <strong>Official UPI ID</strong>
+      <div class="upi-row">
+        <div class="upi-id" id="upiText">
+          YOUR_OFFICIAL_UPI@BANK
         </div>
-
-        <input
-          id="customAmount"
-          class="input"
-          type="number"
-          min="1"
-          placeholder="Custom amount ₹">
-
-        <button class="btn btn-red full" onclick="openPayment()">
-          Continue to Payment
+        <button class="copy" onclick="copyUPI()">
+          Copy
         </button>
-
-        <div class="upi">
-          <b>Verified UPI ID</b>
-
-          <div class="upi-row">
-            <div class="upi-id" id="upiText">
-              YOUR_VERIFIED_UPI@BANK
-            </div>
-
-            <button class="copy" onclick="copyUPI()">Copy</button>
-          </div>
-        </div>
-
       </div>
-
-
-      <div class="donate-box reveal right">
-
-        <h3>Scan to Donate</h3>
-
-        <p class="lead">
-          Add your authorized QR image here before publishing.
-        </p>
-
-        <div class="qr">
-          <div>
-            <div class="qr-placeholder">
-              QR<br>CODE
-            </div>
-          </div>
-        </div>
-
-        <div class="pay-apps">
-
-          <button class="pay-app" onclick="openUPI('gpay')">
-            GPay
-          </button>
-
-          <button class="pay-app" onclick="openUPI('phonepe')">
-            PhonePe
-          </button>
-
-          <button class="pay-app" onclick="openUPI('paytm')">
-            Paytm
-          </button>
-
-        </div>
-
-      </div>
-
     </div>
   </div>
+  <div class="donate-box">
+    <h3>UPI QR Payment</h3>
+    <p class="text">
+      Add the official verified QR code here
+      before accepting donations.
+    </p>
+    <div class="qr">
+      <div>
+        <div class="qr-box">
+          OFFICIAL<br>
+          QR CODE
+        </div>
+        <p
+          style="text-align:center;color:#667085;font-size:12px;margin-top:9px">
+          Replace with official QR
+        </p>
+      </div>
+    </div>
+    <button
+      class="btn full"
+      style="background:#111827;color:white"
+      onclick="openDonate()">
+      Open UPI Payment
+    </button>
+  </div>
+</div>
+  </div>
 </section>
-
-
 <!-- GALLERY -->
 <section>
   <div class="container">
-
-    <div class="section-head center reveal">
-      <div class="kicker">Relief In Action</div>
-      <h2 class="title">Standing together.</h2>
-      <p class="lead">
-        Nepal-specific flood and disaster-response imagery.
-      </p>
-    </div>
-
-    <div class="gallery">
-
-      <div class="image-box gallery-main reveal left">
-        <img
-          src="https://commons.wikimedia.org/wiki/Special:FilePath/U%20S%20and%20Nepali%20collaboration%20takes%20flight%20during%20Pacific%20Angel%2024-2%20%288662121%29.jpg"
-          alt="Humanitarian response in Kathmandu Nepal"
-          loading="lazy">
-      </div>
-
-      <div class="gallery-side">
-
-        <div class="image-box reveal right">
-          <img
-            src="https://commons.wikimedia.org/wiki/Special:FilePath/U%20S%20and%20Nepali%20collaboration%20takes%20flight%20during%20Pacific%20Angel%2024-2%20%288662107%29.jpg"
-            alt="Medical response in Nepal"
-            loading="lazy">
-        </div>
-
-        <div class="image-box reveal right">
-          <img
-            src="https://commons.wikimedia.org/wiki/Special:FilePath/U%20S%20and%20Nepali%20collaboration%20takes%20flight%20during%20Pacific%20Angel%2024-2%20%288662119%29.jpg"
-            alt="Emergency response Nepal"
-            loading="lazy">
-        </div>
-
-      </div>
-
-    </div>
+<div style="max-width:760px;margin:auto;text-align:center">
+  <div class="kicker">
+    RELIEF IN ACTION
+  </div>
+  <h2 class="heading">
+    Standing together.
+  </h2>
+  <p class="text">
+    Photos from the relief campaign can be showcased here.
+  </p>
+</div>
+<div class="gallery-grid">
+  <div class="gallery-photo">
+    <img src="community.jpg" alt="Community support">
+  </div>
+  <div class="gallery-photo-small">
+    <img src="relief.jpg" alt="Relief distribution">
+  </div>
+</div>
   </div>
 </section>
-
-
 <!-- UPDATES -->
 <section id="updates">
   <div class="container">
-
-    <div class="section-head center reveal">
-      <div class="kicker">Campaign Updates</div>
-      <h2 class="title">Latest information.</h2>
-      <p class="lead">
-        Keep campaign information updated using verified sources.
+<div style="max-width:760px;margin:auto;text-align:center">
+  <div class="kicker">
+    LATEST UPDATES
+  </div>
+  <h2 class="heading">
+    Campaign Updates
+  </h2>
+  <p class="text">
+    Keep all public campaign information current
+    and based on verified information.
+  </p>
+</div>
+<div class="updates-grid">
+  <article class="card">
+    <div class="update-image">
+      <img src="gallery.jpg" alt="Flood relief update">
+    </div>
+    <div class="update-body">
+      <div class="update-date">
+        RELIEF UPDATE
+      </div>
+      <h3>Emergency Response</h3>
+      <p>
+        Emergency response can prioritize rescue,
+        essential supplies and support for affected
+        communities.
       </p>
     </div>
-
-    <div class="updates">
-
-      <article class="card reveal">
-        <div class="card-image">
-          <img
-            src="https://commons.wikimedia.org/wiki/Special:FilePath/U%20S%20Air%20Force%20and%20Nepali%20Army%20celebrate%20another%20successful%20Pacific%20Angel%2024-2%20%288667829%29.jpg"
-            alt="Nepal rescue response"
-            loading="lazy">
-        </div>
-        <div class="card-body">
-          <small>RESPONSE</small>
-          <h3>Emergency Preparedness</h3>
-          <p>
-            Search-and-rescue capacity is an important part
-            of disaster response.
-          </p>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-image">
-          <img
-            src="https://commons.wikimedia.org/wiki/Special:FilePath/Pacific%20Angel%2024-2%20starts%20off%20strong%20with%20shared%20academics%20%288648062%29.jpg"
-            alt="Humanitarian response training Nepal"
-            loading="lazy">
-        </div>
-        <div class="card-body">
-          <small>COORDINATION</small>
-          <h3>Relief Coordination</h3>
-          <p>
-            Effective coordination helps humanitarian teams
-            respond during emergencies.
-          </p>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-image">
-          <img
-            src="https://commons.wikimedia.org/wiki/Special:FilePath/U%20S%20and%20Nepali%20collaboration%20takes%20flight%20during%20Pacific%20Angel%2024-2%20%288662140%29.jpg"
-            alt="Nepal humanitarian collaboration"
-            loading="lazy">
-        </div>
-        <div class="card-body">
-          <small>RECOVERY</small>
-          <h3>Community Support</h3>
-          <p>
-            Recovery work requires continued support after
-            the immediate emergency.
-          </p>
-        </div>
-      </article>
-
+  </article>
+  <article class="card">
+    <div class="update-image">
+      <img src="updates.jpg" alt="Community update">
     </div>
+    <div class="update-body">
+      <div class="update-date">
+        COMMUNITY UPDATE
+      </div>
+      <h3>Community Support</h3>
+      <p>
+        Support can help families access essential
+        items while recovery efforts continue.
+      </p>
+    </div>
+  </article>
+</div>
   </div>
 </section>
-
-
+<!-- CONTACT / FINAL CTA -->
+<section class="contact">
+  <div class="container contact-box">
+<div class="kicker">
+  TOGETHER
+</div>
+<h2 class="heading">
+  Every helping hand matters.
+</h2>
+<p class="text">
+  Stand with communities affected by flooding
+  and support responsible humanitarian relief.
+</p>
+<div class="buttons" style="justify-content:center">
+  <a href="#donate" class="btn btn-red">
+    Donate Now →
+  </a>
+  <a href="#home" class="btn btn-outline">
+    Back to Top
+  </a>
+</div>
+  </div>
+</section>
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <strong>Helping Hearts</strong>
-    <br><br>
-    Nepal Flood Relief • Help Humanity • Stand Together
-    <br><br>
-    <small>
-      Donation information must be verified before publishing.
-    </small>
+<strong>Helping Hearts</strong>
+<p style="margin-top:10px">
+  Nepal Flood Relief • Help Humanity • Stand Together
+</p>
+<p style="margin-top:12px;font-size:12px">
+  Verify all organization and payment information
+  before publishing or accepting donations.
+</p>
   </div>
 </footer>
-
-
+<!-- PAYMENT MODAL -->
+<div class="modal" id="paymentModal">
+  <div class="modal-content">
+<button class="close" onclick="closeDonate()">×</button>
+<h2>Donation</h2>
+<p id="amountText" style="color:#667085;margin-top:7px"></p>
+<div class="upi">
+  <strong>Official UPI ID</strong>
+  <div class="upi-row">
+    <div class="upi-id">
+      YOUR_OFFICIAL_UPI@BANK
+    </div>
+    <button class="copy" onclick="copyUPI()">
+      Copy
+    </button>
+  </div>
+</div>
+<button
+  class="btn btn-red full"
+  onclick="payUPI()">
+  Open UPI App
+</button>
+  </div>
+</div>
 <script>
-
-const UPI_ID = "YOUR_VERIFIED_UPI@BANK";
-let selectedAmount = 0;
-
-
-/* NAV */
-
+let donationAmount = 0;
+/*
+  Replace this with the OFFICIAL VERIFIED UPI ID
+  before publishing the donation page.
+*/
+const OFFICIAL_UPI = "YOUR_OFFICIAL_UPI@BANK";
+/* MOBILE MENU */
 function toggleMenu(){
-  document.getElementById("navLinks").classList.toggle("open");
+  document
+    .getElementById("navLinks")
+    .classList.toggle("open");
 }
-
-document.querySelectorAll(".nav-links a").forEach(link=>{
-  link.addEventListener("click",()=>{
-    document.getElementById("navLinks").classList.remove("open");
-  });
-});
-
-
-/* AMOUNT */
-
-function setAmount(amount,button){
-
-  selectedAmount = amount;
-
-  document.getElementById("customAmount").value = amount;
-
-  document.querySelectorAll(".amount").forEach(x=>{
-    x.classList.remove("active");
-  });
-
-  button.classList.add("active");
-}
-
-
-/* PAYMENT */
-
-function openPayment(){
-
-  const custom = Number(
-    document.getElementById("customAmount").value
-  );
-
-  if(custom > 0){
-    selectedAmount = custom;
-  }
-
-  if(!selectedAmount){
-    alert("Please select or enter a donation amount.");
-    return;
-  }
-
-  if(UPI_ID.startsWith("YOUR_")){
-    alert("Please add the verified UPI ID in the code first.");
-    return;
-  }
-
-  openUPI();
-}
-
-
-/* UPI */
-
-function openUPI(app){
-
-  if(UPI_ID.startsWith("YOUR_")){
-    alert("Please add your verified UPI ID first.");
-    return;
-  }
-
-  if(!selectedAmount){
-    const custom = Number(
-      document.getElementById("customAmount").value
-    );
-
-    if(custom > 0){
-      selectedAmount = custom;
-    }
-  }
-
-  if(!selectedAmount){
-    alert("Please select a donation amount first.");
-    return;
-  }
-
-  const url =
-    "upi://pay" +
-    "?pa=" + encodeURIComponent(UPI_ID) +
-    "&pn=" + encodeURIComponent("Helping Hearts") +
-    "&am=" + encodeURIComponent(selectedAmount) +
-    "&cu=INR";
-
-  window.location.href = url;
-}
-
-
-/* COPY */
-
-function copyUPI(){
-
-  if(UPI_ID.startsWith("YOUR_")){
-    alert("Please add the verified UPI ID first.");
-    return;
-  }
-
-  navigator.clipboard.writeText(UPI_ID)
-    .then(()=>{
-      alert("UPI ID copied!");
-    })
-    .catch(()=>{
-      alert("Please copy the UPI ID manually.");
-    });
-}
-
-
-/* SCROLL ANIMATION */
-
-const observer = new IntersectionObserver(
-  entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add("show");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  {threshold:.12}
-);
-
-document.querySelectorAll(".reveal").forEach(el=>{
-  observer.observe(el);
-});
-
-
-/* SAFETY: PREVENT HORIZONTAL OVERFLOW */
-
-document.documentElement.style.overflowX = "hidden";
-document.body.style.overflowX = "hidden";
-
-</script>
-
-</body>
-</html>
+/* CLOSE MOBILE MENU AFTER CLICK */
+document.querySelectorAll(".nav-links a").forEach(function(link){
+  link.addEventListener("click",function(){
+    doc
