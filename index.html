@@ -1782,65 +1782,20 @@ openPayment(
 );
 };
 /* ================= PAYTM ================= */
-function payPaytm(){
-
-  const upi = buildUPI();
-  if(!upi) return;
-
-  const query = upi.split("?")[1];
-
-  paymentStatus.style.display = "none";
-
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-  const paytmURL = "paytmmp://pay?" + query;
-
-  const fallbackURL = "upi://pay?" + query;
-
-  let opened = false;
-
-  const onVisibility = () => {
-    if(document.hidden){
-      opened = true;
-    }
-  };
-
-  document.addEventListener("visibilitychange", onVisibility);
-
-  // First try Paytm specifically
-  window.location.href = paytmURL;
-
-  setTimeout(() => {
-
-    if(!opened){
-
-      // iOS: do NOT send to generic UPI, because that
-      // can open WhatsApp/another registered UPI app.
-      if(isIOS){
-
-        paymentStatus.style.display = "block";
-        paymentStatus.innerHTML =
-          "<strong>Paytm couldn't be opened.</strong><br><br>" +
-          "Open Paytm manually and use UPI ID:<br><br>" +
-          "<strong>" + UPI_ID + "</strong>";
-
-      }else{
-
-        // Android fallback
-        window.location.href = fallbackURL;
-
-      }
-
-    }
-
-    document.removeEventListener(
-      "visibilitychange",
-      onVisibility
-    );
-
-  }, 1200);
-
+window.payPaytm =
+function(){
+const upi =
+buildUPI();
+if(!upi){
+return;
 }
+const query =
+upi.split("?")[1];
+openPayment(
+"gpay://upi/pay?" + query,
+"Paytm"
+);
+};
 /* ================= COPY UPI ================= */
 window.copyUPI =
 async function(){
