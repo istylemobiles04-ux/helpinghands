@@ -1276,7 +1276,167 @@ footer,
 
 </section>
 
-<!-- ================= DONATE ================= -->
+<!-- ================= DONATE / UPI PAYMENT ================= -->
+
+<style>
+.donation-box{
+  margin-top:45px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.donation-panel{
+  background:#fff;
+  padding:30px;
+  border:1px solid #dde3ea;
+  border-radius:21px;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.donation-panel h3{
+  font-size:22px;
+  margin-bottom:8px;
+}
+
+.donation-panel p{
+  color:#667085;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.donation-amounts{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+  margin:22px 0 14px;
+}
+
+.donation-amount{
+  padding:13px 7px;
+  background:#fff;
+  border:1px solid #d4dae2;
+  border-radius:9px;
+  font-weight:800;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.donation-amount:hover,
+.donation-amount.selected{
+  border-color:#ef4444;
+  background:#ef4444;
+  color:#fff;
+}
+
+.custom-donation{
+  width:100%;
+  padding:15px;
+  border:1px solid #d4dae2;
+  border-radius:9px;
+  outline:none;
+  font-size:15px;
+  margin-top:8px;
+}
+
+.custom-donation:focus{
+  border-color:#ef4444;
+}
+
+.selected-donation{
+  margin-top:15px;
+  padding:14px;
+  background:#f6f8fa;
+  border-radius:9px;
+  text-align:center;
+  font-weight:900;
+  font-size:18px;
+}
+
+.donate-now{
+  width:100%;
+  margin-top:14px;
+  padding:16px;
+  border:0;
+  border-radius:10px;
+  background:#ef4444;
+  color:#fff;
+  font-size:16px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.donate-now:hover{
+  transform:translateY(-2px);
+}
+
+.upi-id-box{
+  margin-top:20px;
+  padding:15px;
+  background:#f6f8fa;
+  border:1px solid #e0e5eb;
+  border-radius:12px;
+}
+
+.upi-id-box strong{
+  display:block;
+  margin-bottom:8px;
+}
+
+.upi-id{
+  padding:12px;
+  background:#fff;
+  border:1px solid #e0e5eb;
+  border-radius:8px;
+  font-weight:800;
+  word-break:break-all;
+}
+
+.qr-panel{
+  text-align:center;
+}
+
+.qr-panel img{
+  width:260px;
+  height:260px;
+  max-width:100%;
+  margin:20px auto 0;
+  object-fit:contain;
+  border-radius:14px;
+  background:#fff;
+  border:1px solid #e0e5eb;
+}
+
+.qr-panel small{
+  display:block;
+  margin-top:12px;
+  color:#667085;
+  line-height:1.5;
+}
+
+@media(max-width:850px){
+  .donation-box{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  .donation-panel{
+    padding:20px;
+  }
+
+  .donation-amounts{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .qr-panel img{
+    width:230px;
+    height:230px;
+  }
+}
+</style>
+
 
 <section id="donate">
 
@@ -1293,84 +1453,125 @@ footer,
       </h2>
 
       <p class="text">
-        Choose your donation amount and payment option.
+        Choose an amount and support emergency relief efforts
+        for communities affected by flooding.
       </p>
 
     </div>
 
-    <div class="donate-grid">
 
-      <div class="donate-box fade">
+    <div class="donation-box">
 
-        <h3>
-          Choose Donation Amount
-        </h3>
 
-        <p class="text" style="margin-top:7px">
-          Select an amount or enter your own.
+      <!-- AMOUNT / PAYMENT -->
+
+      <div class="donation-panel fade">
+
+        <h3>Choose Donation Amount</h3>
+
+        <p>
+          Select an amount or enter a custom donation.
         </p>
 
-        <div class="amounts">
 
-          <button class="amount" onclick="setAmount(100)">
+        <div class="donation-amounts">
+
+          <button class="donation-amount selected" data-amount="100">
             ₹100
           </button>
 
-          <button class="amount" onclick="setAmount(500)">
+          <button class="donation-amount" data-amount="500">
             ₹500
           </button>
 
-          <button class="amount" onclick="setAmount(1000)">
+          <button class="donation-amount" data-amount="1000">
             ₹1,000
           </button>
 
-          <button class="amount" onclick="setAmount(2000)">
+          <button class="donation-amount" data-amount="2000">
             ₹2,000
           </button>
 
-          <button class="amount" onclick="setAmount(5000)">
+          <button class="donation-amount" data-amount="5000">
             ₹5,000
           </button>
 
-          <button class="amount" onclick="setAmount(10000)">
+          <button class="donation-amount" data-amount="10000">
             ₹10,000
           </button>
 
         </div>
 
+
+        <label for="customDonation">
+          <strong>Custom Amount</strong>
+        </label>
+
         <input
-          id="amountInput"
-          class="input"
           type="number"
+          id="customDonation"
+          class="custom-donation"
+          placeholder="Enter amount in ₹"
           min="1"
-          placeholder="Enter amount ₹"
+          inputmode="numeric"
         >
 
-        <div class="upi">
 
-          <div class="upi-title">
-            UPI ID
-          </div>
+        <div class="selected-donation">
+          Donation: <span id="selectedDonation">₹100</span>
+        </div>
+
+
+        <button
+          type="button"
+          class="donate-now"
+          id="donateNow">
+
+          Donate Now →
+
+        </button>
+
+
+        <div class="upi-id-box">
+
+          <strong>UPI ID</strong>
 
           <div class="upi-id">
-            ADD-YOUR-UPI-ID
+            veer20noe@ybl
           </div>
 
         </div>
 
       </div>
 
-      <div class="donate-box fade">
 
-        <h3>
-          QR Code
-        </h3>
+      <!-- QR CODE -->
 
-        <!-- APNA QR CODE YAHAN IMAGE KE ROOP ME ADD KAR SAKTE HO -->
+      <div class="donation-panel qr-panel fade">
 
-        <div class="qr" id="qrBox"></div>
+        <h3>Scan & Donate</h3>
+
+        <p>
+          Scan the QR code using any supported UPI app.
+        </p>
+
+        <!--
+          Upload your QR image to GitHub with the exact name:
+          qr.png
+        -->
+
+        <img
+          src="qr.png"
+          alt="HelpingHearts UPI QR Code"
+        >
+
+        <small>
+          PhonePe, Google Pay, Paytm, BHIM and other
+          supported UPI apps can be used.
+        </small>
 
       </div>
+
 
     </div>
 
@@ -1378,6 +1579,102 @@ footer,
 
 </section>
 
+
+<script>
+
+const UPI_ID = "veer20noe@ybl";
+const PAYEE_NAME = "HelpingHearts";
+
+let donationAmount = 100;
+
+const donationButtons =
+  document.querySelectorAll(".donation-amount");
+
+const customDonation =
+  document.getElementById("customDonation");
+
+const selectedDonation =
+  document.getElementById("selectedDonation");
+
+const donateNow =
+  document.getElementById("donateNow");
+
+
+function setDonationAmount(amount){
+
+  donationAmount = Number(amount);
+
+  selectedDonation.textContent =
+    "₹" + donationAmount.toLocaleString("en-IN");
+
+}
+
+
+donationButtons.forEach(button => {
+
+  button.addEventListener("click", function(){
+
+    donationButtons.forEach(btn => {
+      btn.classList.remove("selected");
+    });
+
+    this.classList.add("selected");
+
+    customDonation.value = "";
+
+    setDonationAmount(
+      this.dataset.amount
+    );
+
+  });
+
+});
+
+
+customDonation.addEventListener("input", function(){
+
+  donationButtons.forEach(btn => {
+    btn.classList.remove("selected");
+  });
+
+  const amount = Number(this.value);
+
+  if(amount >= 1){
+    setDonationAmount(amount);
+  }
+
+});
+
+
+donateNow.addEventListener("click", function(){
+
+  let amount = Number(
+    customDonation.value || donationAmount
+  );
+
+  if(!amount || amount < 1){
+
+    alert("Please enter a valid donation amount.");
+
+    return;
+
+  }
+
+
+  const upiLink =
+    "upi://pay" +
+    "?pa=" + encodeURIComponent(UPI_ID) +
+    "&pn=" + encodeURIComponent(PAYEE_NAME) +
+    "&am=" + encodeURIComponent(amount.toFixed(2)) +
+    "&cu=INR";
+
+
+  window.location.href = upiLink;
+
+});
+
+</script>
+  
 <!-- ================= UPDATES ================= -->
 
 <section id="updates">
