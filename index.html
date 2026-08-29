@@ -13,10 +13,9 @@
 }
 html{
     scroll-behavior:smooth;
-    overflow-x:hidden;
 }
 body{
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Inter,Arial,Helvetica,sans-serif;
     background:#f5f7fa;
     color:#111827;
     overflow-x:hidden;
@@ -25,19 +24,19 @@ a{
     text-decoration:none;
 }
 img{
+    display:block;
     width:100%;
     height:100%;
-    display:block;
     object-fit:cover;
 }
 .container{
     width:100%;
-    max-width:1150px;
+    max-width:1180px;
     margin:auto;
     padding:0 20px;
 }
 section{
-    padding:80px 0;
+    padding:85px 0;
 }
 /* ================= HEADER ================= */
 header{
@@ -45,79 +44,86 @@ header{
     top:0;
     left:0;
     width:100%;
-    height:70px;
+    height:74px;
     background:#07111f;
     z-index:9999;
-    box-shadow:0 5px 25px rgba(0,0,0,.18);
+    box-shadow:0 6px 25px rgba(0,0,0,.18);
 }
 .nav{
-    height:70px;
-    max-width:1150px;
+    height:74px;
+    max-width:1180px;
     margin:auto;
     padding:0 20px;
     display:flex;
     align-items:center;
-    justify-content:center;
+    gap:20px;
 }
 .logo{
-    position:absolute;
-    left:20px;
+    flex:0 0 auto;
     color:#fff;
     font-size:23px;
     font-weight:900;
-    letter-spacing:-.5px;
+    letter-spacing:-.6px;
 }
 .logo span{
     color:#ef4444;
 }
 .menu{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:8px;
+}
+.menu a{
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:20px;
-}
-.menu a{
-    color:#dbe3ed;
+    min-height:38px;
+    padding:9px 13px;
+    background:#fff;
+    color:#172033;
+    border-radius:9px;
     font-size:12px;
-    font-weight:700;
-    transition:.2s ease;
+    font-weight:800;
+    letter-spacing:.2px;
+    white-space:nowrap;
+    transition:.22s ease;
+    box-shadow:0 2px 8px rgba(0,0,0,.10);
 }
 .menu a:hover{
-    color:#fff;
+    transform:translateY(-2px);
+    background:#f1f5f9;
 }
-.menu .donate-link{
+.menu a.donate-link{
     background:#ef4444;
     color:#fff;
-    padding:11px 16px;
-    border-radius:8px;
+}
+.menu a.donate-link:hover{
+    background:#dc2626;
 }
 /* ================= HOME ================= */
 #home{
     min-height:760px;
-    padding-top:70px;
+    padding-top:74px;
     display:flex;
     align-items:center;
     color:#fff;
     background:
-    linear-gradient(
-        90deg,
-        rgba(0,0,0,.88),
-        rgba(0,0,0,.55),
-        rgba(0,0,0,.18)
-    ),
+    linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.52),rgba(0,0,0,.18)),
     url("home.jpg") center/cover no-repeat;
 }
 .hero{
-    max-width:700px;
+    max-width:720px;
 }
 .badge{
     display:inline-block;
     padding:9px 14px;
     border-radius:30px;
     background:rgba(239,68,68,.18);
-    border:1px solid rgba(255,255,255,.28);
+    border:1px solid rgba(255,255,255,.3);
     font-size:11px;
-    font-weight:700;
+    font-weight:800;
     letter-spacing:1.5px;
 }
 .hero h1{
@@ -131,7 +137,6 @@ header{
 }
 .hero p{
     margin-top:24px;
-    max-width:650px;
     color:#dbe3ed;
     font-size:18px;
     line-height:1.7;
@@ -146,7 +151,7 @@ header{
     display:inline-block;
     padding:14px 22px;
     border-radius:10px;
-    font-weight:700;
+    font-weight:800;
     transition:.2s ease;
 }
 .btn:hover{
@@ -157,9 +162,9 @@ header{
     color:#fff;
 }
 .outline{
-    background:rgba(255,255,255,.09);
     color:#fff;
-    border:1px solid rgba(255,255,255,.35);
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.4);
 }
 /* ================= STATS ================= */
 .stats{
@@ -173,10 +178,10 @@ header{
     background:#fff;
     border-radius:18px;
     overflow:hidden;
-    box-shadow:0 15px 40px rgba(0,0,0,.10);
+    box-shadow:0 15px 40px rgba(0,0,0,.1);
 }
 .stat{
-    padding:26px;
+    padding:27px;
     text-align:center;
     border-right:1px solid #e5e7eb;
 }
@@ -207,7 +212,7 @@ header{
 .kicker{
     color:#dc4141;
     font-size:11px;
-    font-weight:800;
+    font-weight:900;
     letter-spacing:2px;
 }
 .title{
@@ -223,9 +228,9 @@ header{
 }
 .photo{
     height:430px;
-    border-radius:21px;
+    border-radius:22px;
     overflow:hidden;
-    box-shadow:0 12px 35px rgba(0,0,0,.10);
+    box-shadow:0 14px 40px rgba(0,0,0,.1);
 }
 /* ================= ABOUT ================= */
 .checks{
@@ -236,24 +241,24 @@ header{
 .check{
     display:flex;
     gap:12px;
-    align-items:flex-start;
 }
-.check-icon{
-    width:30px;
-    height:30px;
-    min-width:30px;
+.check-icon,
+.community-icon{
+    width:31px;
+    height:31px;
+    min-width:31px;
     display:grid;
     place-items:center;
     border-radius:50%;
     background:#eaf8ef;
     color:#15803d;
-    font-weight:800;
+    font-weight:900;
 }
 .check strong{
     display:block;
-    margin-bottom:3px;
 }
 .check p{
+    margin-top:4px;
     color:#667085;
     font-size:14px;
     line-height:1.5;
@@ -297,7 +302,7 @@ header{
 .card{
     background:#fff;
     border:1px solid #e1e6ec;
-    border-radius:19px;
+    border-radius:20px;
     overflow:hidden;
     box-shadow:0 8px 25px rgba(0,0,0,.05);
 }
@@ -322,9 +327,9 @@ header{
 }
 .feature-img{
     height:410px;
-    border-radius:21px;
+    border-radius:22px;
     overflow:hidden;
-    box-shadow:0 12px 35px rgba(0,0,0,.10);
+    box-shadow:0 14px 40px rgba(0,0,0,.1);
 }
 /* ================= COMMUNITY ================= */
 #community{
@@ -346,17 +351,6 @@ header{
     gap:12px;
     align-items:flex-start;
 }
-.community-icon{
-    width:30px;
-    height:30px;
-    min-width:30px;
-    display:grid;
-    place-items:center;
-    border-radius:50%;
-    background:#eaf8ef;
-    color:#15803d;
-    font-weight:800;
-}
 .community-point strong{
     display:block;
 }
@@ -373,20 +367,20 @@ header{
     background:#ef4444;
     color:#fff;
     border-radius:10px;
-    font-weight:700;
+    font-weight:800;
 }
 /* ================= GALLERY ================= */
 .gallery-section{
     background:#f5f7fa;
 }
 .gallery-img{
-    margin-top:42px;
     height:430px;
-    border-radius:21px;
+    margin-top:42px;
+    border-radius:22px;
     overflow:hidden;
-    box-shadow:0 12px 35px rgba(0,0,0,.10);
+    box-shadow:0 14px 40px rgba(0,0,0,.1);
 }
-/* ================= DONATION ================= */
+/* ================= DONATE ================= */
 #donate{
     background:#eef2f6;
 }
@@ -417,9 +411,14 @@ header{
     background:#fff;
     border:1px solid #d4dae2;
     border-radius:9px;
-    font-weight:700;
+    font-weight:800;
     color:#111827;
     cursor:pointer;
+    font-size:14px;
+}
+.amount:hover{
+    border-color:#ef4444;
+    color:#ef4444;
 }
 .input{
     width:100%;
@@ -442,27 +441,26 @@ header{
     background:#fff;
     border:1px solid #e0e5eb;
     border-radius:8px;
-    word-break:break-all;
     font-weight:700;
 }
-/* QR AREA */
+/* QR BOX - EMPTY */
 .qr{
-    height:310px;
+    height:330px;
     margin-top:20px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
     background:#fafbfc;
     border:2px dashed #cfd6df;
     border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     overflow:hidden;
 }
 .qr img{
-    width:220px;
-    height:220px;
+    width:230px;
+    height:230px;
     object-fit:contain;
 }
-/* ================= CAMPAIGN UPDATES ================= */
+/* ================= UPDATES ================= */
 #updates{
     background:#fff;
 }
@@ -473,7 +471,7 @@ header{
     margin-top:45px;
 }
 .update-image{
-    height:280px;
+    height:290px;
 }
 /* ================= CTA ================= */
 .cta{
@@ -495,13 +493,47 @@ footer strong{
     color:#fff;
     font-size:21px;
 }
-/* ================= TABLET ================= */
-@media(max-width:900px){
+/* ================= RESPONSIVE ================= */
+@media(max-width:1050px){
+    .nav{
+        gap:12px;
+    }
     .menu{
-        gap:10px;
+        gap:5px;
     }
     .menu a{
+        padding:8px 9px;
         font-size:10px;
+    }
+}
+@media(max-width:850px){
+    header{
+        height:112px;
+    }
+    .nav{
+        height:112px;
+        flex-direction:column;
+        justify-content:center;
+        gap:10px;
+    }
+    .logo{
+        position:static;
+        font-size:21px;
+    }
+    .menu{
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:5px;
+    }
+    .menu a{
+        min-height:31px;
+        padding:7px 9px;
+        font-size:9px;
+    }
+    #home{
+        padding-top:112px;
+        min-height:720px;
     }
     .two{
         grid-template-columns:1fr;
@@ -516,47 +548,31 @@ footer strong{
         grid-template-columns:1fr;
     }
 }
-/* ================= MOBILE ================= */
 @media(max-width:600px){
     section{
-        padding:62px 0;
+        padding:65px 0;
     }
-    header,
+    header{
+        height:118px;
+    }
     .nav{
-        height:62px;
-    }
-    .nav{
-        justify-content:flex-end;
-        padding:0 12px;
-    }
-    .logo{
-        left:13px;
-        font-size:19px;
+        height:118px;
+        padding:7px 10px;
     }
     .menu{
-        max-width:calc(100% - 118px);
-        overflow-x:auto;
-        overflow-y:hidden;
-        justify-content:flex-start;
-        gap:9px;
-        scrollbar-width:none;
-    }
-    .menu::-webkit-scrollbar{
-        display:none;
+        gap:5px;
+        max-width:100%;
     }
     .menu a{
-        font-size:8px;
-        white-space:nowrap;
-    }
-    .menu .donate-link{
-        padding:8px 10px;
+        font-size:9px;
+        padding:7px 8px;
     }
     #home{
-        min-height:680px;
-        padding-top:62px;
+        min-height:700px;
+        padding-top:118px;
     }
     .hero h1{
-        font-size:50px;
+        font-size:51px;
         letter-spacing:-3px;
     }
     .hero p{
@@ -591,23 +607,23 @@ footer strong{
     .gallery-img{
         height:300px;
     }
-    .amounts{
-        grid-template-columns:repeat(2,1fr);
-    }
-    .qr{
-        height:290px;
-    }
     .update-image{
         height:280px;
     }
+    .amounts{
+        grid-template-columns:repeat(2,1fr);
+    }
     .donate-box{
         padding:22px;
+    }
+    .qr{
+        height:290px;
     }
 }
 </style>
 </head>
 <body>
-<!-- ================= HEADER ================= -->
+<!-- HEADER -->
 <header>
 <div class="nav">
 <a href="#home" class="logo">
@@ -616,23 +632,17 @@ Helping<span>Hearts</span>
 <nav class="menu">
 
 Home
-
 About
-
 Emergency
-
 Relief
-
 Community
-
 Donate
-
 Updates
 
 </nav>
 </div>
 </header>
-<!-- ================= HOME ================= -->
+<!-- HOME -->
 <section id="home">
 <div class="container">
 <div class="hero">
@@ -659,7 +669,7 @@ Learn More
 </div>
 </div>
 </section>
-<!-- ================= STATS ================= -->
+<!-- STATS -->
 <div class="stats">
 <div class="container">
 <div class="stats-grid">
@@ -669,7 +679,7 @@ Learn More
 </div>
 <div class="stat">
 <b>Essentials</b>
-<small>Food & water</small>
+<small>Food & Water</small>
 </div>
 <div class="stat">
 <b>Recovery</b>
@@ -678,16 +688,11 @@ Learn More
 </div>
 </div>
 </div>
-<!-- ================= ABOUT ================= -->
+<!-- ABOUT -->
 <section id="about">
 <div class="container two">
 <div class="photo">
-
-<img
-src=“about.jpg”
-alt=“HelpingHearts About”
-loading=“eager”
-
+<img src="about.jpg" alt="About HelpingHearts" loading="eager">
 </div>
 <div>
 <div class="kicker">
@@ -706,41 +711,29 @@ can focus on immediate needs and recovery.
 <div class="check">
 <div class="check-icon">✓</div>
 <div>
-
-Emergency Food
-
-<p>
-Basic food and household supplies.
-</p>
+<strong>Emergency Food</strong>
+<p>Basic food and household supplies.</p>
 </div>
 </div>
 <div class="check">
 <div class="check-icon">✓</div>
 <div>
-
-Clean Water
-
-<p>
-Water and hygiene assistance.
-</p>
+<strong>Clean Water</strong>
+<p>Water and hygiene assistance.</p>
 </div>
 </div>
 <div class="check">
 <div class="check-icon">✓</div>
 <div>
-
-Emergency Shelter
-
-<p>
-Temporary shelter and essential support.
-</p>
+<strong>Emergency Shelter</strong>
+<p>Temporary shelter and essential support.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- ================= EMERGENCY ================= -->
+<!-- EMERGENCY -->
 <section class="dark" id="emergency">
 <div class="container two">
 <div>
@@ -756,42 +749,25 @@ shelter and basic supplies for affected communities.
 </p>
 <div class="emergency-list">
 <div class="emergency-item">
-
-Food & Essentials
-
-<span>
-Emergency food packages and basic supplies.
-</span>
+<strong>Food & Essentials</strong>
+<span>Emergency food packages and basic supplies.</span>
 </div>
 <div class="emergency-item">
-
-Water & Hygiene
-
-<span>
-Clean water and hygiene assistance.
-</span>
+<strong>Water & Hygiene</strong>
+<span>Clean water and hygiene assistance.</span>
 </div>
 <div class="emergency-item">
-
-Emergency Shelter
-
-<span>
-Temporary shelter and essential support.
-</span>
+<strong>Emergency Shelter</strong>
+<span>Temporary shelter and essential support.</span>
 </div>
 </div>
 </div>
 <div class="photo">
-
-<img
-src=“emergency.jpg”
-alt=“Emergency flood relief”
-loading=“lazy”
-
+<img src="emergency.jpg" alt="Emergency flood relief" loading="lazy">
 </div>
 </div>
 </section>
-<!-- ================= RELIEF ================= -->
+<!-- RELIEF -->
 <section id="relief">
 <div class="container">
 <div class="center">
@@ -809,17 +785,10 @@ for people affected by flooding.
 <div class="cards">
 <div class="card">
 <div class="card-img">
-
-<img
-src=“food.jpg”
-alt=“Food Support”
-loading=“lazy”
-
+<img src="food.jpg" alt="Food Support" loading="lazy">
 </div>
 <div class="card-body">
-<h3>
-Food Support
-</h3>
+<h3>Food Support</h3>
 <p>
 Emergency food and household necessities
 for affected families.
@@ -828,17 +797,10 @@ for affected families.
 </div>
 <div class="card">
 <div class="card-img">
-
-<img
-src=“water.jpg”
-alt=“Clean Water”
-loading=“lazy”
-
+<img src="water.jpg" alt="Clean Water" loading="lazy">
 </div>
 <div class="card-body">
-<h3>
-Clean Water
-</h3>
+<h3>Clean Water</h3>
 <p>
 Water and hygiene supplies during
 emergency conditions.
@@ -847,17 +809,10 @@ emergency conditions.
 </div>
 <div class="card">
 <div class="card-img">
-
-<img
-src=“shelter.jpg”
-alt=“Emergency Shelter”
-loading=“lazy”
-
+<img src="shelter.jpg" alt="Emergency Shelter" loading="lazy">
 </div>
 <div class="card-body">
-<h3>
-Emergency Shelter
-</h3>
+<h3>Emergency Shelter</h3>
 <p>
 Temporary shelter and basic support
 for displaced families.
@@ -867,7 +822,7 @@ for displaced families.
 </div>
 </div>
 </section>
-<!-- ================= RELIEF FEATURE ================= -->
+<!-- RELIEF FEATURE -->
 <section id="relief-feature">
 <div class="container two">
 <div>
@@ -888,25 +843,15 @@ Community Support →
 </div>
 </div>
 <div class="feature-img">
-
-<img
-src=“relief.jpg”
-alt=“Relief operation”
-loading=“lazy”
-
+<img src="relief.jpg" alt="Relief operation" loading="lazy">
 </div>
 </div>
 </section>
-<!-- ================= COMMUNITY SUPPORT ================= -->
+<!-- COMMUNITY SUPPORT -->
 <section id="community">
 <div class="container two">
 <div class="community-img">
-
-<img
-src=“community.jpg”
-alt=“Community Support”
-loading=“lazy”
-
+<img src="community.jpg" alt="Community Support" loading="lazy">
 </div>
 <div>
 <div class="kicker">
@@ -922,42 +867,24 @@ supplies and move toward recovery.
 </p>
 <div class="community-points">
 <div class="community-point">
-<div class="community-icon">
-✓
-</div>
+<div class="community-icon">✓</div>
 <div>
-<strong>
-Support Families
-</strong>
-<p>
-Help affected families with essential needs.
-</p>
+<strong>Support Families</strong>
+<p>Help affected families with essential needs.</p>
 </div>
 </div>
 <div class="community-point">
-<div class="community-icon">
-✓
-</div>
+<div class="community-icon">✓</div>
 <div>
-<strong>
-Community Recovery
-</strong>
-<p>
-Support recovery efforts in affected communities.
-</p>
+<strong>Community Recovery</strong>
+<p>Support recovery efforts in affected communities.</p>
 </div>
 </div>
 <div class="community-point">
-<div class="community-icon">
-✓
-</div>
+<div class="community-icon">✓</div>
 <div>
-<strong>
-Stand Together
-</strong>
-<p>
-Every genuine helping hand can make a difference.
-</p>
+<strong>Stand Together</strong>
+<p>Every genuine helping hand can make a difference.</p>
 </div>
 </div>
 </div>
@@ -967,7 +894,7 @@ Support The Community →
 </div>
 </div>
 </section>
-<!-- ================= GALLERY ================= -->
+<!-- GALLERY -->
 <section class="gallery-section">
 <div class="container">
 <div class="center">
@@ -982,16 +909,11 @@ Relief activities and community support.
 </p>
 </div>
 <div class="gallery-img">
-
-<img
-src=“gallery.jpg”
-alt=“Nepal Flood Relief Gallery”
-loading=“lazy”
-
+<img src="gallery.jpg" alt="Nepal Flood Relief Gallery" loading="lazy">
 </div>
 </div>
 </section>
-<!-- ================= DONATE ================= -->
+<!-- DONATION -->
 <section id="donate">
 <div class="container">
 <div class="center">
@@ -1002,11 +924,10 @@ MAKE A DIFFERENCE
 Support Flood Relief
 </h2>
 <p class="text">
-Choose an amount and use the available payment option.
+Choose your donation amount and payment option.
 </p>
 </div>
 <div class="donate-grid">
-<!-- AMOUNT / UPI -->
 <div class="donate-box">
 <h3>
 Choose Donation Amount
@@ -1015,27 +936,28 @@ Choose Donation Amount
 Select an amount or enter your own.
 </p>
 <div class="amounts">
-<button class="amount" type="button">
+<button class="amount" type="button" onclick="setAmount(100)">
 ₹100
 </button>
-<button class="amount" type="button">
+<button class="amount" type="button" onclick="setAmount(500)">
 ₹500
 </button>
-<button class="amount" type="button">
+<button class="amount" type="button" onclick="setAmount(1000)">
 ₹1,000
 </button>
-<button class="amount" type="button">
+<button class="amount" type="button" onclick="setAmount(2000)">
 ₹2,000
 </button>
-<button class="amount" type="button">
+<button class="amount" type="button" onclick="setAmount(5000)">
 ₹5,000
 </button>
-<button class="amount" type="button">
+<button class="amount" type="button" onclick="setAmount(10000)">
 ₹10,000
 </button>
 </div>
 
 <input
+id=“amountInput”
 class=“input”
 type=“number”
 min=“1”
@@ -1056,7 +978,8 @@ ADD-YOUR-UPI-ID
 QR Code
 </h3>
 <div class="qr">
-<!-- APNA QR IMAGE YAHAN ADD KARNA:
+<!-- APNA QR IMAGE IS DIV KE ANDAR LAGANA
+     FILE NAME EXAMPLE: qr.jpg
 <img src="qr.jpg" alt="QR Code">
 -->
 </div>
@@ -1064,7 +987,7 @@ QR Code
 </div>
 </div>
 </section>
-<!-- ================= CAMPAIGN UPDATES ================= -->
+<!-- CAMPAIGN UPDATES -->
 <section id="updates">
 <div class="container">
 <div class="center">
@@ -1075,19 +998,14 @@ CAMPAIGN UPDATES
 Latest Updates
 </h2>
 <p class="text">
-Latest information about relief activities and
-community support.
+Latest information about relief activities
+and community support.
 </p>
 </div>
 <div class="update-grid">
 <div class="card">
 <div class="update-image">
-
-<img
-src=“updates.jpg”
-alt=“Campaign Update”
-loading=“lazy”
-
+<img src="updates.jpg" alt="Campaign Update" loading="lazy">
 </div>
 <div class="card-body">
 <div class="kicker">
@@ -1104,12 +1022,7 @@ community needs and support.
 </div>
 <div class="card">
 <div class="update-image">
-
-<img
-src=“gallery.jpg”
-alt=“Relief Update”
-loading=“lazy”
-
+<img src="gallery.jpg" alt="Relief Update" loading="lazy">
 </div>
 <div class="card-body">
 <div class="kicker">
@@ -1127,7 +1040,7 @@ recovery activities.
 </div>
 </div>
 </section>
-<!-- ================= FINAL CTA ================= -->
+<!-- FINAL CTA -->
 <section class="cta">
 <div class="container">
 <div class="kicker">
@@ -1140,10 +1053,7 @@ Every helping hand matters.
 Support responsible humanitarian relief
 and community initiatives.
 </p>
-<div
-class="buttons"
-style="justify-content:center"
->
+<div class="buttons" style="justify-content:center">
 <a href="#donate" class="btn red">
 Donate Now →
 </a>
@@ -1153,7 +1063,7 @@ Back to Top
 </div>
 </div>
 </section>
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 <footer>
 <div class="container">
 <strong>
@@ -1164,5 +1074,10 @@ Nepal Flood Relief • Help Humanity • Stand Together
 </p>
 </div>
 </footer>
+<script>
+function setAmount(value){
+    document.getElementById("amountInput").value = value;
+}
+</script>
 </body>
 </html>
