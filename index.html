@@ -1,0 +1,2306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07111f">
+
+<title>Helping Hearts — Nepal Flood Relief</title>
+
+<style>
+:root{
+  --dark:#06101d;
+  --dark2:#0d1b2e;
+  --red:#ef4444;
+  --red2:#dc2626;
+  --text:#101828;
+  --muted:#667085;
+  --bg:#f5f7fa;
+  --white:#fff;
+  --border:#e4e9ef;
+  --radius:24px;
+  --shadow:0 20px 60px rgba(16,24,40,.10);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button,input{
+  font:inherit;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+section{
+  padding:100px 0;
+}
+
+.kicker{
+  color:var(--red);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.title{
+  margin:12px 0 18px;
+  font-size:clamp(38px,5vw,60px);
+  line-height:1;
+  letter-spacing:-2.5px;
+}
+
+.lead{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.75;
+}
+
+
+/* NAV */
+
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:74px;
+  z-index:1000;
+  background:rgba(3,10,20,.90);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav{
+  height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  color:#fff;
+  font-size:23px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#ff6868;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:27px;
+}
+
+.nav-links a{
+  color:#d5deea;
+  font-size:14px;
+  font-weight:800;
+  transition:.25s;
+}
+
+.nav-links a:hover{
+  color:#fff;
+}
+
+.nav-donate{
+  padding:10px 16px;
+  border-radius:10px;
+  background:var(--red);
+  color:#fff!important;
+}
+
+.menu{
+  display:none;
+  color:#fff;
+  font-size:28px;
+  cursor:pointer;
+}
+
+
+/* HERO */
+
+.hero{
+  min-height:820px;
+  padding-top:74px;
+  display:flex;
+  align-items:center;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,#030913f5,#030913b5,#03091335),
+    linear-gradient(135deg,#102b43,#185b78 55%,#257c91);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:650px;
+  height:650px;
+  right:-180px;
+  bottom:-250px;
+  border-radius:50%;
+  background:#55c7e633;
+  filter:blur(10px);
+}
+
+.hero-content{
+  max-width:760px;
+  position:relative;
+  z-index:2;
+  animation:heroIn 1s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes heroIn{
+  from{
+    opacity:0;
+    transform:translateY(45px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.badge{
+  display:inline-flex;
+  padding:8px 14px;
+  border-radius:999px;
+  color:#ffb1b1;
+  background:#ff4b4b20;
+  border:1px solid #ffaaaa55;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.5px;
+}
+
+.hero h1{
+  margin:23px 0 20px;
+  font-size:clamp(54px,8vw,92px);
+  line-height:.94;
+  letter-spacing:-5px;
+}
+
+.hero h1 span{
+  color:#ff6969;
+}
+
+.hero p{
+  max-width:680px;
+  color:#d6deea;
+  font-size:18px;
+  line-height:1.7;
+}
+
+.actions{
+  display:flex;
+  gap:12px;
+  margin-top:31px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  border:0;
+  border-radius:12px;
+  padding:14px 23px;
+  cursor:pointer;
+  font-weight:900;
+  transition:.25s;
+}
+
+.btn-red{
+  color:#fff;
+  background:var(--red);
+}
+
+.btn-red:hover{
+  background:var(--red2);
+  transform:translateY(-3px);
+  box-shadow:0 15px 35px #ef444444;
+}
+
+.btn-light{
+  color:#fff;
+  background:#ffffff12;
+  border:1px solid #ffffff40;
+}
+
+.btn-light:hover{
+  background:#ffffff20;
+  transform:translateY(-3px);
+}
+
+
+/* HERO ILLUSTRATION */
+
+.hero-art{
+  position:absolute;
+  right:6%;
+  bottom:10%;
+  width:390px;
+  height:300px;
+  z-index:1;
+  opacity:.9;
+}
+
+.mountain{
+  position:absolute;
+  bottom:80px;
+  width:0;
+  height:0;
+  border-left:130px solid transparent;
+  border-right:130px solid transparent;
+  border-bottom:210px solid #31536b;
+}
+
+.m1{
+  left:20px;
+}
+
+.m2{
+  left:160px;
+  border-bottom-color:#27475e;
+}
+
+.water{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:110px;
+  background:#2180a2;
+  border-radius:50% 50% 0 0;
+}
+
+.water:before,
+.water:after{
+  content:"";
+  position:absolute;
+  left:10%;
+  right:10%;
+  height:5px;
+  background:#82dbef;
+  border-radius:50%;
+}
+
+.water:before{
+  top:35px;
+}
+
+.water:after{
+  top:65px;
+}
+
+
+/* STATS */
+
+.stats{
+  position:relative;
+  z-index:5;
+  margin-top:-55px;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  background:#fff;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+.stat{
+  padding:30px 20px;
+  text-align:center;
+  border-right:1px solid #e7ebf0;
+}
+
+.stat:last-child{
+  border-right:0;
+}
+
+.stat strong{
+  display:block;
+  font-size:28px;
+}
+
+.stat span{
+  color:var(--muted);
+  font-size:13px;
+}
+
+
+/* COMMON IMAGE */
+
+.image-box{
+  width:100%;
+  aspect-ratio:4/3;
+  overflow:hidden;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  position:relative;
+}
+
+.image-box svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+
+/* ABOUT */
+
+.two-column{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.points{
+  display:grid;
+  gap:16px;
+  margin-top:27px;
+}
+
+.point{
+  display:flex;
+  gap:13px;
+}
+
+.tick{
+  width:30px;
+  height:30px;
+  min-width:30px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#eaf8ef;
+  color:#168b45;
+  font-weight:900;
+}
+
+
+/* EMERGENCY */
+
+.dark{
+  background:var(--dark);
+  color:#fff;
+}
+
+.dark .lead{
+  color:#aeb9ca;
+}
+
+.appeal-list{
+  display:grid;
+  gap:14px;
+  margin-top:28px;
+}
+
+.appeal-item{
+  padding:18px;
+  background:#101d31;
+  border:1px solid #263750;
+  border-radius:17px;
+  transition:.3s;
+}
+
+.appeal-item:hover{
+  transform:translateX(7px);
+  border-color:#ef6464;
+}
+
+.appeal-item b{
+  display:block;
+}
+
+.appeal-item span{
+  color:#aab7c9;
+  display:block;
+  margin-top:4px;
+  font-size:14px;
+}
+
+
+/* CARDS */
+
+.center{
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.section-head{
+  max-width:760px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:50px;
+}
+
+.card{
+  overflow:hidden;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:22px;
+  box-shadow:0 10px 35px rgba(16,24,40,.06);
+  transition:.35s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow);
+}
+
+.card-image{
+  aspect-ratio:16/10;
+  overflow:hidden;
+}
+
+.card-image svg{
+  width:100%;
+  height:100%;
+  transition:.7s;
+}
+
+.card:hover .card-image svg{
+  transform:scale(1.05);
+}
+
+.card-body{
+  padding:23px;
+}
+
+.card-body h3{
+  margin-bottom:7px;
+}
+
+.card-body p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+}
+
+
+/* DONATION */
+
+.donate-section{
+  background:#eef2f6;
+}
+
+.donate-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:50px;
+}
+
+.donate-box{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:32px;
+  box-shadow:0 15px 45px rgba(16,24,40,.06);
+}
+
+.amount-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+  margin:23px 0 13px;
+}
+
+.amount{
+  padding:12px 8px;
+  border:1px solid #d5dce6;
+  border-radius:10px;
+  background:#fff;
+  cursor:pointer;
+  font-weight:900;
+  transition:.2s;
+}
+
+.amount:hover,
+.amount.active{
+  background:#fff1f1;
+  border-color:#ef4444;
+  color:#d92d20;
+  transform:scale(1.03);
+}
+
+.input{
+  width:100%;
+  padding:14px;
+  border:1px solid #d5dce6;
+  border-radius:11px;
+  outline:none;
+}
+
+.input:focus{
+  border-color:#ef4444;
+}
+
+.full{
+  width:100%;
+  margin-top:12px;
+}
+
+.upi-box{
+  margin-top:18px;
+  padding:17px;
+  border-radius:15px;
+  background:#f5f7f9;
+}
+
+.upi-row{
+  display:flex;
+  gap:8px;
+  margin-top:8px;
+}
+
+.upi-id{
+  min-width:0;
+  flex:1;
+  padding:12px;
+  border:1px solid #e1e6ec;
+  border-radius:9px;
+  background:#fff;
+  font-size:14px;
+  font-weight:900;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.copy-btn{
+  border:0;
+  border-radius:9px;
+  padding:0 15px;
+  background:#101828;
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.qr-area{
+  margin-top:22px;
+  width:100%;
+  aspect-ratio:1;
+  max-height:310px;
+  display:grid;
+  place-items:center;
+  border:2px dashed #d5dce6;
+  border-radius:18px;
+  background:#fafbfc;
+}
+
+.qr-placeholder{
+  width:190px;
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  border:7px solid #111;
+  background:
+    repeating-conic-gradient(#111 0 25%,#fff 0 50%)
+    0/24px 24px;
+  font-weight:900;
+}
+
+
+/* GALLERY */
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:1.4fr .6fr;
+  gap:18px;
+  margin-top:50px;
+}
+
+.gallery-large{
+  aspect-ratio:16/10;
+  overflow:hidden;
+  border-radius:22px;
+}
+
+.gallery-small{
+  display:grid;
+  gap:18px;
+}
+
+.gallery-small div{
+  aspect-ratio:16/10;
+  overflow:hidden;
+  border-radius:22px;
+}
+
+.gallery-grid svg{
+  width:100%;
+  height:100%;
+  transition:.8s;
+}
+
+.gallery-grid div:hover svg{
+  transform:scale(1.05);
+}
+
+
+/* ANIMATIONS */
+
+.reveal{
+  opacity:0;
+  transform:translateY(42px);
+  transition:
+    opacity .8s ease,
+    transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal-left{
+  opacity:0;
+  transform:translateX(-45px);
+  transition:
+    opacity .85s ease,
+    transform .85s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal-right{
+  opacity:0;
+  transform:translateX(45px);
+  transition:
+    opacity .85s ease,
+    transform .85s cubic-bezier(.2,.8,.2,1);
+}
+
+.show{
+  opacity:1;
+  transform:none;
+}
+
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:2000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.72);
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(440px,100%);
+  padding:30px;
+  border-radius:23px;
+  background:#fff;
+  animation:modalIn .3s ease;
+}
+
+@keyframes modalIn{
+  from{
+    opacity:0;
+    transform:scale(.9) translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.close{
+  float:right;
+  border:0;
+  background:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+
+/* FOOTER */
+
+footer{
+  padding:45px 0;
+  background:#040a13;
+  color:#aab5c5;
+  text-align:center;
+}
+
+footer strong{
+  color:#fff;
+  font-size:19px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+  section{
+    padding:78px 0;
+  }
+
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:74px;
+    left:0;
+    width:100%;
+    padding:22px;
+    background:#07111f;
+    flex-direction:column;
+    gap:19px;
+  }
+
+  .nav-links.open{
+    display:flex;
+  }
+
+  .menu{
+    display:block;
+  }
+
+  .hero{
+    min-height:720px;
+  }
+
+  .hero-art{
+    opacity:.35;
+    right:-80px;
+    bottom:40px;
+    transform:scale(.8);
+  }
+
+  .stats-grid{
+    grid-template-columns:1fr;
+  }
+
+  .stat{
+    border-right:0;
+    border-bottom:1px solid #e7ebf0;
+  }
+
+  .stat:last-child{
+    border-bottom:0;
+  }
+
+  .two-column,
+  .donate-grid{
+    grid-template-columns:1fr;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-grid{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-small{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .title{
+    letter-spacing:-1.8px;
+  }
+
+  .hero h1{
+    letter-spacing:-3px;
+  }
+}
+
+@media(max-width:500px){
+
+  .hero{
+    min-height:700px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .actions .btn{
+    width:100%;
+  }
+
+  .amount-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .gallery-small{
+    grid-template-columns:1fr;
+  }
+
+  .qr-placeholder{
+    width:160px;
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+
+  .reveal,
+  .reveal-left,
+  .reveal-right{
+    opacity:1;
+    transform:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav class="navbar">
+
+<div class="container nav">
+
+<a class="logo" href="#home">
+Helping<span>Hearts</span>
+</a>
+
+<div class="nav-links" id="navLinks">
+
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#emergency">Emergency</a>
+<a href="#relief">Relief</a>
+<a href="#donate" class="nav-donate">Donate</a>
+<a href="#updates">Updates</a>
+
+</div>
+
+<div class="menu" id="menuButton">
+☰
+</div>
+
+</div>
+
+</nav>
+
+
+<!-- HOME -->
+
+<header class="hero" id="home">
+
+<div class="hero-art">
+<div class="mountain m1"></div>
+<div class="mountain m2"></div>
+<div class="water"></div>
+</div>
+
+<div class="container">
+
+<div class="hero-content">
+
+<div class="badge">
+NEPAL FLOOD RELIEF • CAMPAIGN
+</div>
+
+<h1>
+Small Help.<br>
+<span>Big Hope.</span>
+</h1>
+
+<p>
+Stand with communities affected by flooding in Nepal.
+Support urgent essentials, safe water, shelter and
+community recovery.
+</p>
+
+<div class="actions">
+
+<a href="#donate" class="btn btn-red">
+Donate Now →
+</a>
+
+<a href="#about" class="btn btn-light">
+Our Mission
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="container stats-grid">
+
+<div class="stat">
+<strong>Emergency</strong>
+<span>Rapid response</span>
+</div>
+
+<div class="stat">
+<strong>Essentials</strong>
+<span>Food & clean water</span>
+</div>
+
+<div class="stat">
+<strong>Recovery</strong>
+<span>Community support</span>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="container two-column">
+
+<div class="image-box reveal-left">
+
+<svg viewBox="0 0 900 650"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect width="900" height="650" fill="#e9f2ee"/>
+
+<path
+d="M0 350L180 180L350 330L520 140L720 320L900 170V650H0Z"
+fill="#72958d"/>
+
+<path
+d="M0 450Q220 360 450 460T900 430V650H0Z"
+fill="#3d91a5"/>
+
+<rect x="180" y="330"
+width="270"
+height="170"
+rx="10"
+fill="#fff"/>
+
+<path
+d="M155 340L315 210L475 340"
+fill="#df5757"/>
+
+<rect x="280" y="405"
+width="65"
+height="95"
+fill="#727c84"/>
+
+<circle cx="670" cy="355"
+r="48"
+fill="#d69a7a"/>
+
+<path
+d="M605 450Q670 360 735 450V560H605Z"
+fill="#f2f4f7"/>
+
+</svg>
+
+</div>
+
+
+<div class="reveal-right">
+
+<div class="kicker">
+Our Mission
+</div>
+
+<h2 class="title">
+When disaster strikes,
+humanity comes first.
+</h2>
+
+<p class="lead">
+Flood emergencies can disrupt homes, roads and access
+to basic needs. This campaign is designed to communicate
+relief priorities clearly and direct supporters to verified
+donation information.
+</p>
+
+
+<div class="points">
+
+<div class="point">
+<div class="tick">✓</div>
+<div>
+<b>Emergency food</b><br>
+<span class="lead">
+Basic food and household supplies.
+</span>
+</div>
+</div>
+
+<div class="point">
+<div class="tick">✓</div>
+<div>
+<b>Safe water</b><br>
+<span class="lead">
+Clean water and hygiene assistance.
+</span>
+</div>
+</div>
+
+<div class="point">
+<div class="tick">✓</div>
+<div>
+<b>Emergency shelter</b><br>
+<span class="lead">
+Temporary shelter and recovery support.
+</span>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- EMERGENCY -->
+
+<section class="dark" id="emergency">
+
+<div class="container two-column">
+
+<div class="reveal-left">
+
+<div class="kicker">
+Emergency Appeal
+</div>
+
+<h2 class="title">
+Help with the essentials first.
+</h2>
+
+<p class="lead">
+Immediate priorities during a flood emergency can include
+evacuation, food, water, shelter and medical assistance.
+</p>
+
+
+<div class="appeal-list">
+
+<div class="appeal-item">
+<b>Food & household essentials</b>
+<span>
+Basic supplies for affected families.
+</span>
+</div>
+
+<div class="appeal-item">
+<b>Water & sanitation</b>
+<span>
+Clean water and hygiene assistance.
+</span>
+</div>
+
+<div class="appeal-item">
+<b>Shelter & recovery</b>
+<span>
+Emergency shelter and rebuilding support.
+</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="image-box reveal-right">
+
+<svg viewBox="0 0 900 650"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect width="900" height="650"
+fill="#101d31"/>
+
+<path
+d="M0 360L180 170L360 340L550 120L750 330L900 190V650H0Z"
+fill="#29445c"/>
+
+<path
+d="M0 460Q220 370 450 470T900 440V650H0Z"
+fill="#236d92"/>
+
+<circle
+cx="450"
+cy="320"
+r="120"
+fill="#ef444422"/>
+
+<path
+d="M450 210L515 330H475V450H425V330H385Z"
+fill="#fff"/>
+
+<path
+d="M100 510H800"
+stroke="#75d3ed"
+stroke-width="15"
+opacity=".6"/>
+
+</svg>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- RELIEF -->
+
+<section id="relief">
+
+<div class="container">
+
+<div class="section-head center reveal">
+
+<div class="kicker">
+Where Help Goes
+</div>
+
+<h2 class="title">
+Support the essentials.
+</h2>
+
+<p class="lead">
+Every relief category has its own visual and information.
+</p>
+
+</div>
+
+
+<div class="cards">
+
+
+<!-- FOOD -->
+
+<article class="card reveal">
+
+<div class="card-image">
+
+<svg viewBox="0 0 800 500"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect width="800" height="500"
+fill="#fff2d9"/>
+
+<circle
+cx="660"
+cy="100"
+r="75"
+fill="#ffd166"/>
+
+<path
+d="M0 340Q200 260 400 350T800 330V500H0Z"
+fill="#62a6b5"/>
+
+<rect
+x="120"
+y="220"
+width="560"
+height="170"
+rx="18"
+fill="#f1bc55"/>
+
+<path
+d="M155 270H645M155 325H645"
+stroke="#fff"
+stroke-width="16"
+opacity=".7"/>
+
+</svg>
+
+</div>
+
+<div class="card-body">
+
+<h3>Food & Essentials</h3>
+
+<p>
+Emergency food packages and household necessities
+for affected families.
+</p>
+
+</div>
+
+</article>
+
+
+<!-- WATER -->
+
+<article class="card reveal">
+
+<div class="card-image">
+
+<svg viewBox="0 0 800 500"
+xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+
+<linearGradient id="waterGradient"
+x2="0" y2="1">
+
+<stop stop-color="#dff7ff"/>
+
+<stop offset="1"
+stop-color="#58b6d7"/>
+
+</linearGradient>
+
+</defs>
+
+<rect width="800"
+height="500"
+fill="url(#waterGradient)"/>
+
+<path
+d="M0 330Q210 250 400 340T800 320V500H0Z"
+fill="#1d769b"/>
+
+<path
+d="M400 80C330 180 290 225 290 285A110 110 0 00510 285C510 225 470 180 400 80Z"
+fill="#fff"/>
+
+<path
+d="M345 300Q400 270 455 300"
+fill="none"
+stroke="#64c8e8"
+stroke-width="15"/>
+
+</svg>
+
+</div>
+
+<div class="card-body">
+
+<h3>Water & Basic Needs</h3>
+
+<p>
+Support for clean water, hygiene and essential
+emergency needs.
+</p>
+
+</div>
+
+</article>
+
+
+<!-- RECOVERY -->
+
+<article class="card reveal">
+
+<div class="card-image">
+
+<svg viewBox="0 0 800 500"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect width="800"
+height="500"
+fill="#eaf5ee"/>
+
+<path
+d="M0 350L180 190L350 330L540 150L800 330V500H0Z"
+fill="#709a82"/>
+
+<rect
+x="170"
+y="270"
+width="240"
+height="160"
+fill="#fff"/>
+
+<path
+d="M145 280L290 160L435 280"
+fill="#df5757"/>
+
+<rect
+x="250"
+y="350"
+width="70"
+height="80"
+fill="#737e85"/>
+
+<path
+d="M500 440Q510 250 620 190"
+fill="none"
+stroke="#42885b"
+stroke-width="30"
+stroke-linecap="round"/>
+
+</svg>
+
+</div>
+
+<div class="card-body">
+
+<h3>Community Recovery</h3>
+
+<p>
+Support for vulnerable communities as recovery
+work continues.
+</p>
+
+</div>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DONATE -->
+
+<section class="donate-section" id="donate">
+
+<div class="container">
+
+<div class="section-head center reveal">
+
+<div class="kicker">
+Make A Difference
+</div>
+
+<h2 class="title">
+Donate Directly
+</h2>
+
+<p class="lead">
+Use the verified UPI ID and QR belonging to the
+authorized relief recipient.
+</p>
+
+</div>
+
+
+<div class="donate-grid">
+
+
+<div class="donate-box reveal-left">
+
+<h3>Choose an amount</h3>
+
+<p class="lead">
+Select an amount or enter your own.
+</p>
+
+
+<div class="amount-grid">
+
+<button class="amount" data-amount="100">
+₹100
+</button>
+
+<button class="amount" data-amount="500">
+₹500
+</button>
+
+<button class="amount" data-amount="1000">
+₹1,000
+</button>
+
+<button class="amount" data-amount="2000">
+₹2,000
+</button>
+
+<button class="amount" data-amount="5000">
+₹5,000
+</button>
+
+<button class="amount" data-amount="10000">
+₹10,000
+</button>
+
+</div>
+
+
+<input
+class="input"
+id="customAmount"
+type="number"
+min="1"
+placeholder="Custom amount ₹"
+>
+
+
+<button
+class="btn btn-red full"
+id="continuePayment">
+
+Continue to Payment
+
+</button>
+
+
+<div class="upi-box">
+
+<b>Verified UPI ID</b>
+
+<div class="upi-row">
+
+<div class="upi-id"
+id="upiDisplay">
+YOUR_VERIFIED_UPI@BANK
+</div>
+
+<button
+class="copy-btn"
+id="copyUpi">
+Copy
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="donate-box reveal-right">
+
+<h3>Scan to Donate</h3>
+
+<p class="lead">
+Replace this placeholder with the authorized
+recipient's real UPI QR.
+</p>
+
+
+<div class="qr-area">
+
+<div>
+
+<div class="qr-placeholder">
+QR
+</div>
+
+<p class="note">
+VERIFIED QR
+</p>
+
+</div>
+
+</div>
+
+
+<button
+class="btn full"
+style="background:#101828;color:#fff"
+id="payUpi">
+
+Pay via UPI
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section>
+
+<div class="container">
+
+<div class="section-head center reveal">
+
+<div class="kicker">
+Relief In Action
+</div>
+
+<h2 class="title">
+Standing together.
+</h2>
+
+<p class="lead">
+Different visuals keep the campaign visually engaging.
+</p>
+
+</div>
+
+
+<div class="gallery-grid reveal">
+
+
+<div class="gallery-large">
+
+<svg viewBox="0 0 1000 650"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect width="1000"
+height="650"
+fill="#102b42"/>
+
+<path
+d="M0 370Q230 270 500 390T1000 340V650H0Z"
+fill="#237b9f"/>
+
+<path
+d="M0 500Q300 420 600 520T1000 470"
+fill="none"
+stroke="#8be2f6"
+stroke-width="20"/>
+
+<rect
+x="260"
+y="240"
+width="480"
+height="85"
+rx="15"
+fill="#f0b94e"/>
+
+<circle
+cx="190"
+cy="260"
+r="50"
+fill="#d79a7c"/>
+
+<circle
+cx="810"
+cy="280"
+r="50"
+fill="#c58d70"/>
+
+</svg>
+
+</div>
+
+
+<div class="gallery-small">
+
+<div>
+
+<svg viewBox="0 0 800 500"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect width="800"
+height="500"
+fill="#dceff4"/>
+
+<path
+d="M0 380L200 190L400 370L610 160L800 350V500H0Z"
+fill="#548b91"/>
+
+<path
+d="M150 290L400 100L650 290"
+fill="#df5757"/>
+
+<rect
+x="210"
+y="280"
+width="380"
+height="150"
+fill="#fff"/>
+
+</svg>
+
+</div>
+
+
+<div>
+
+<svg viewBox="0 0 800 500"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect width="800"
+height="500"
+fill="#fff0d8"/>
+
+<circle
+cx="650"
+cy="90"
+r="65"
+fill="#f5bd57"/>
+
+<path
+d="M0 350Q200 270 400 370T800 340V500H0Z"
+fill="#5b9eb0"/>
+
+<circle
+cx="230"
+cy="260"
+r="50"
+fill="#d69a7a"/>
+
+<rect
+x="470"
+y="250"
+width="200"
+height="120"
+rx="16"
+fill="#f1bd52"/>
+
+</svg>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- UPDATES -->
+
+<section id="updates">
+
+<div class="container">
+
+<div class="section-head center reveal">
+
+<div class="kicker">
+Campaign Updates
+</div>
+
+<h2 class="title">
+Latest information.
+</h2>
+
+<p class="lead">
+Keep this section updated using verified humanitarian
+information.
+</p>
+
+</div>
+
+
+<div class="cards">
+
+
+<article class="card reveal">
+
+<div class="card-image">
+
+<svg viewBox="0 0 800 500"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect width="800"
+height="500"
+fill="#102b42"/>
+
+<path
+d="M0 330Q200 250 400 350T800 320V500H0Z"
+fill="#277b9e"/>
+
+<circle
+cx="400"
+cy="220"
+r="85"
+fill="#ef4444"/>
+
+<path
+d="M400 155V285M335 220H465"
+stroke="#fff"
+stroke-width="35"/>
+
+</svg>
+
+</div>
+
+<div class="card-body">
+
+<small style="color:#df3f3f;font-weight:900">
+RESCUE
+</small>
+
+<h3>
+Emergency Response
+</h3>
+
+<p>
+Rescue and evacuation can remain critical during
+severe flood emergencies.
+</p>
+
+</div>
+
+</article>
+
+
+<article class="card reveal">
+
+<div class="card-image">
+
+<svg viewBox="0 0 800 500"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect width="800"
+height="500"
+fill="#fff2d9"/>
+
+<path
+d="M0 350Q220 270 420 360T800 330V500H0Z"
+fill="#61a5b5"/>
+
+<rect
+x="150"
+y="210"
+width="500"
+height="170"
+rx="20"
+fill="#f0bd58"/>
+
+<path
+d="M180 260H620M180 320H620"
+stroke="#fff"
+stroke-width="18"/>
+
+</svg>
+
+</div>
+
+<div class="card-body">
+
+<small style="color:#df3f3f;font-weight:900">
+RELIEF
+</small>
+
+<h3>
+Essential Supplies
+</h3>
+
+<p>
+Food and basic supplies can help affected families
+during emergencies.
+</p>
+
+</div>
+
+</article>
+
+
+<article class="card reveal">
+
+<div class="card-image">
+
+<svg viewBox="0 0 800 500"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect width="800"
+height="500"
+fill="#eaf5ee"/>
+
+<path
+d="M0 350L180 190L350 330L550 150L800 330V500H0Z"
+fill="#719b83"/>
+
+<rect
+x="180"
+y="260"
+width="250"
+height="160"
+fill="#fff"/>
+
+<path
+d="M150 270L305 140L460 270"
+fill="#df5757"/>
+
+<rect
+x="270"
+y="340"
+width="65"
+height="80"
+fill="#747e85"/>
+
+</svg>
+
+</div>
+
+<div class="card-body">
+
+<small style="color:#df3f3f;font-weight:900">
+RECOVERY
+</small>
+
+<h3>
+Community Support
+</h3>
+
+<p>
+Recovery assistance helps communities rebuild after
+the immediate emergency.
+</p>
+
+</div>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+<strong>
+Helping Hearts
+</strong>
+
+<br><br>
+
+Nepal Flood Relief • Help Humanity • Stand Together
+
+<br><br>
+
+<small>
+Verify the beneficiary and donation details before publishing.
+</small>
+
+</div>
+
+</footer>
+
+
+<!-- PAYMENT MODAL -->
+
+<div class="modal" id="paymentModal">
+
+<div class="modal-box">
+
+<button
+class="close"
+id="closeModal">
+×
+</button>
+
+<h2>
+Ready to Donate?
+</h2>
+
+<p
+id="selectedAmount"
+class="lead"
+style="margin-top:6px">
+</p>
+
+
+<div class="upi-box">
+
+<b>
+Verified UPI ID
+</b>
+
+<div class="upi-row">
+
+<div class="upi-id">
+YOUR_VERIFIED_UPI@BANK
+</div>
+
+<button
+class="copy-btn"
+id="copyUpi2">
+Copy
+</button>
+
+</div>
+
+</div>
+
+
+<button
+class="btn btn-red full"
+id="openUpi">
+
+Open UPI App
+
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuButton =
+document.getElementById("menuButton");
+
+const navLinks =
+document.getElementById("navLinks");
+
+menuButton.addEventListener("click",function(){
+
+navLinks.classList.toggle("open");
+
+});
+
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(function(link){
+
+link.addEventListener("click",function(){
+
+navLinks.classList.remove("open");
+
+});
+
+});
+
+
+/* =========================
+   UPI SETTINGS
+========================= */
+
+/*
+  IMPORTANT:
+  Replace this with the REAL
+  VERIFIED UPI ID before publishing.
+*/
+
+const UPI_ID =
+"YOUR_VERIFIED_UPI@BANK";
+
+let selectedDonationAmount = 0;
+
+
+/* Amount buttons */
+
+document
+.querySelectorAll(".amount")
+.forEach(function(button){
+
+button.addEventListener("click",function(){
+
+selectedDonationAmount =
+Number(button.dataset.amount);
+
+document
+.getElementById("customAmount")
+.value =
+selectedDonationAmount;
+
+
+document
+.querySelectorAll(".amount")
+.forEach(function(item){
+
+item.classList.remove("active");
+
+});
+
+button.classList.add("active");
+
+});
+
+});
+
+
+/* Custom amount */
+
+document
+.getElementById("customAmount")
+.addEventListener("input",function(){
+
+selectedDonationAmount =
+Number(this.value);
+
+document
+.querySelectorAll(".amount")
+.forEach(function(item){
+
+item.classList.remove("active");
+
+});
+
+});
+
+
+/* Copy UPI */
+
+function copyUPI(){
+
+if(UPI_ID.startsWith("YOUR_")){
+
+alert(
+"Add your verified UPI ID first."
+);
+
+return;
+
+}
+
+navigator
+.clipboard
+.writeText(UPI_ID)
+.then(function(){
+
+alert("UPI ID copied!");
+
+})
+.catch(function(){
+
+alert(
+"Please copy the UPI ID manually."
+);
+
+});
+
+}
+
+
+document
+.getElementById("copyUpi")
+.addEventListener("click",copyUPI);
+
+document
+.getElementById("copyUpi2")
+.addEventListener("click",copyUPI);
+
+
+/* Open payment modal */
+
+function openPayment(){
+
+if(!selectedDonationAmount){
+
+alert(
+"Please select or enter a donation amount."
+);
+
+return;
+
+}
+
+document
+.getElementById("selectedAmount")
+.textContent =
+"Donation amount: ₹" +
+selectedDonationAmount
+.toLocaleString("en-IN");
+
+
+document
+.getElementById("paymentModal")
+.classList.add("show");
+
+}
+
+
+document
+.getElementById("continuePayment")
+.addEventListener(
+"click",
+openPayment
+);
+
+
+/* Close modal */
+
+document
+.getElementById("closeModal")
+.addEventListener(
+"click",
+function(){
+
+document
+.getElementById("paymentModal")
+.classList.remove("show");
+
+});
+
+
+document
+.getElementById("paymentModal")
+.addEventListener(
+"click",
+function(event){
+
+if(event.target === this){
+
+this.classList.remove("show");
+
+}
+
+});
+
+
+/* UPI payment */
+
+function payUPI(){
+
+if(UPI_ID.startsWith("YOUR_")){
+
+alert(
+"Add the verified UPI ID before publishing."
+);
+
+return;
+
+}
+
+if(!selectedDonationAmount){
+
+alert(
+"Please select a donation amount first."
+);
+
+return;
+
+}
+
+const paymentURL =
+"upi://pay" +
+"?pa=" +
+encodeURIComponent(UPI_ID) +
+"&pn=" +
+encodeURIComponent(
+"Nepal Flood Relief"
+) +
+"&am=" +
+encodeURIComponent(
+selectedDonationAmount
+) +
+"&cu=INR";
+
+window.location.href =
+paymentURL;
+
+}
+
+
+document
+.getElementById("payUpi")
+.addEventListener(
+"click",
+function(){
+
+if(!selectedDonationAmount){
+
+alert(
+"Please select an amount first."
+);
+
+return;
+
+}
+
+payUPI();
+
+});
+
+
+document
+.getElementById("openUpi")
+.addEventListener(
+"click",
+payUPI
+);
+
+
+/* =========================
+   SCROLL ANIMATIONS
+========================= */
+
+const observer =
+new IntersectionObserver(
+
+function(entries){
+
+entries.forEach(function(entry){
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+observer.unobserve(
+entry.target
+);
+
+}
+
+});
+
+},
+{
+threshold:.12
+}
+);
+
+
+document
+.querySelectorAll(
+".reveal,.reveal-left,.reveal-right"
+)
+.forEach(function(element){
+
+observer.observe(element);
+
+});
+
+
+</script>
+
+</body>
+</html>
