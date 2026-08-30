@@ -1798,7 +1798,7 @@ window.payPaytm = function() {
   if (isIOS) {
     paytmURL = "paytmmp://upi/pay?" + query;
   } else {
-    paytmURL = "intent://upi/pay?" + query + "#Intent;scheme=paytmmp;package=net.one97.paytm;end";
+    paytmURL = "intent://upi/pay?" + query + "#Intent;scheme=upi;package=net.one97.paytm;end";
   }
 
   openPayment(
