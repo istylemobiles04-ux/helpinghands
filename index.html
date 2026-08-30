@@ -1781,20 +1781,30 @@ openPayment(
 "Google Pay"
 );
 };
-/* ================= PAYTM ================= */
-window.payPaytm =
-function(){
-const upi =
-buildUPI();
-if(!upi){
-return;
-}
-const query =
-upi.split("?")[1];
-openPayment(
-"paytmmp:upi://pay?" + query,
-"Paytm"
-);
+/* ======================== PAYTM ======================== */
+window.payPaytm = function() {
+  const upi = buildUPI();
+  if(!upi){
+    return;
+  }
+  
+  const query = upi.split("?")[1];
+  
+  // Check if the device is iOS
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  
+  let paytmURL = "";
+  
+  if (isIOS) {
+    paytmURL = "paytmmp://upi/pay?" + query;
+  } else {
+    paytmURL = "intent://upi/pay?" + query + "#Intent;scheme=paytmmp;package=net.one97.paytm;end";
+  }
+
+  openPayment(
+    paytmURL,
+    "Paytm"
+  );
 };
 /* ================= COPY UPI ================= */
 window.copyUPI =
