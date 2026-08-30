@@ -1276,581 +1276,121 @@ footer,
 
 </section>
 
-<!-- ================= DONATE PAYMENT ================= -->
-<style>
-.payment-wrap{
-  margin-top:45px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:22px;
-}
-.payment-box{
-  background:#fff;
-  padding:30px;
-  border:1px solid #dde3ea;
-  border-radius:21px;
-  box-shadow:0 10px 30px rgba(0,0,0,.05);
-}
-.payment-box h3{
-  font-size:22px;
-  margin-bottom:8px;
-}
-.payment-box > p{
-  color:#667085;
-  font-size:14px;
-  line-height:1.6;
-}
-.amount-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:9px;
-  margin:22px 0 14px;
-}
-.amount-btn{
-  padding:13px 7px;
-  background:#fff;
-  border:1px solid #d4dae2;
-  border-radius:9px;
-  font-weight:800;
-  cursor:pointer;
-  transition:.2s;
-}
-.amount-btn:hover,
-.amount-btn.selected{
-  background:#ef4444;
-  border-color:#ef4444;
-  color:#fff;
-}
-.custom-amount{
-  width:100%;
-  padding:15px;
-  border:1px solid #d4dae2;
-  border-radius:9px;
-  outline:none;
-  font-size:15px;
-}
-.selected-amount{
-  margin-top:15px;
-  padding:14px;
-  background:#f6f8fa;
-  border-radius:9px;
-  text-align:center;
-  font-weight:900;
-  font-size:18px;
-}
-.payment-options{
-  margin-top:20px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-.pay-option{
-  padding:15px 10px;
-  border:1px solid #d4dae2;
-  background:#fff;
-  border-radius:10px;
-  font-weight:900;
-  cursor:pointer;
-  transition:.2s;
-}
-.pay-option:hover{
-  border-color:#ef4444;
-  transform:translateY(-2px);
-}
-.upi-display{
-  margin-top:20px;
-  padding:15px;
-  background:#f6f8fa;
-  border:1px solid #e0e5eb;
-  border-radius:12px;
-}
-.upi-value-row{
-  display:flex;
-  gap:8px;
-  margin-top:8px;
-}
-.upi-value{
-  flex:1;
-  min-width:0;
-  padding:12px;
-  background:#fff;
-  border:1px solid #e0e5eb;
-  border-radius:8px;
-  font-weight:800;
-  word-break:break-all;
-}
-.copy-upi{
-  padding:0 14px;
-  border:1px solid #d4dae2;
-  background:#fff;
-  border-radius:8px;
-  font-weight:800;
-  cursor:pointer;
-}
-.copy-upi:active{
-  transform:scale(.97);
-}
-.copy-success{
-  display:none;
-  margin-top:8px;
-  font-size:13px;
-  color:#15803d;
-  font-weight:700;
-}
-.qr-box{
-  text-align:center;
-}
-.qr-box img{
-  width:260px;
-  height:260px;
-  max-width:100%;
-  margin:20px auto 0;
-  object-fit:contain;
-  border-radius:14px;
-  border:1px solid #e0e5eb;
-}
-.qr-box small{
-  display:block;
-  margin-top:12px;
-  color:#667085;
-  line-height:1.5;
-}
-.payment-status{
-  display:none;
-  margin-top:15px;
-  padding:13px;
-  background:#fff7ed;
-  border:1px solid #fed7aa;
-  border-radius:9px;
-  color:#9a3412;
-  font-size:13px;
-  line-height:1.5;
-}
-.status-copy{
-  margin-top:10px;
-  padding:9px 12px;
-  border:1px solid #d4dae2;
-  background:#fff;
-  border-radius:7px;
-  font-weight:700;
-  cursor:pointer;
-}
-@media(max-width:850px){
-  .payment-wrap{
-    grid-template-columns:1fr;
-  }
-}
-@media(max-width:600px){
-  .payment-box{
-    padding:20px;
-  }
-  .amount-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-  .qr-box img{
-    width:230px;
-    height:230px;
-  }
-  .upi-value-row{
-    align-items:stretch;
-  }
-  .copy-upi{
-    padding:0 11px;
-  }
-}
-</style>
-<section id="donate">
-<div class="container">
-<div class="center fade">
-<div class="kicker">
-MAKE A DIFFERENCE
-</div>
-<h2 class="title">
-Support Flood Relief
-</h2>
-<p class="text">
-Choose your donation amount and make a UPI payment.
-</p>
-</div>
-<div class="payment-wrap">
-<div class="payment-box fade">
-<h3>Choose Donation Amount</h3>
-<p>
-Select an amount or enter your own amount.
-</p>
-<div class="amount-grid">
-<button
-type="button"
-class="amount-btn"
-data-amount="100">
-₹100
-</button>
-<button
-type="button"
-class="amount-btn"
-data-amount="200">
-₹200
-</button>
-<button
-type="button"
-class="amount-btn"
-data-amount="500">
-₹500
-</button>
-<button
-type="button"
-class="amount-btn"
-data-amount="1000">
-₹1,000
-</button>
-<button
-type="button"
-class="amount-btn"
-data-amount="2000">
-₹2,000
-</button>
-<button
-type="button"
-class="amount-btn"
-data-amount="5000">
-₹5,000
-</button>
-<button
-type="button"
-class="amount-btn"
-data-amount="10000">
-₹10,000
-</button>
-</div>
-<input
-type="number"
-id="customAmount"
-class="custom-amount"
-placeholder="Custom amount ₹"
-min="1"
-step="1"
-inputmode="numeric"
->
-<div class="selected-amount">
-Donation:
-<span id="selectedAmount">
-Select amount
-</span>
-</div>
-<div class="payment-options">
-<button
-type="button"
-class="pay-option"
-onclick="payPhonePe()">
-PhonePe
-</button>
-<button
-type="button"
-class="pay-option"
-onclick="payGPay()">
-Google Pay
-</button>
-<button
-type="button"
-class="pay-option"
-onclick="payPaytm()">
-Paytm
-</button>
-</div>
-<div class="upi-display">
-<strong>UPI ID</strong>
-<div class="upi-value-row">
-<div
-class="upi-value"
-id="upiIdText">
-veer20noe@ybl
-</div>
-<button
-type="button"
-class="copy-upi"
-onclick="copyUPI()">
-COPY
-</button>
-</div>
-<div
-id="copySuccess"
-class="copy-success">
-UPI ID copied successfully.
-</div>
-</div>
-<div
-id="paymentStatus"
-class="payment-status">
-</div>
-</div>
-<div class="payment-box qr-box fade">
-<h3>Scan & Donate</h3>
-<p>
-Scan the QR code using your preferred UPI app.
-</p>
-<img
-src="qr.jpg"
-alt="HelpingHearts UPI QR Code"
->
-<small>
-Use PhonePe, Google Pay, Paytm, BHIM or another
-supported UPI app to scan and donate.
-</small>
-</div>
-</div>
-</div>
-</section>
-<script>
-(function(){
-const UPI_ID = "veer20noe@ybl";
-const PAYEE_NAME = "HelpingHearts";
-let donationAmount = null;
-const amountButtons =
-document.querySelectorAll(".amount-btn");
-const customAmount =
-document.getElementById("customAmount");
-const selectedAmount =
-document.getElementById("selectedAmount");
-const paymentStatus =
-document.getElementById("paymentStatus");
-const copySuccess =
-document.getElementById("copySuccess");
-function getAmount(){
-const custom =
-Number(customAmount.value);
-if(custom > 0){
-return custom;
-}
-if(
-donationAmount !== null &&
-donationAmount > 0
-){
-return donationAmount;
-}
-return null;
-}
-function setAmount(amount){
-donationAmount =
-Number(amount);
-selectedAmount.textContent =
-"₹" +
-donationAmount.toLocaleString("en-IN");
-paymentStatus.style.display =
-"none";
-}
-amountButtons.forEach(function(button){
-button.addEventListener(
-"click",
-function(){
-amountButtons.forEach(
-function(btn){
-btn.classList.remove("selected");
-});
-this.classList.add("selected");
-customAmount.value = "";
-setAmount(
-this.dataset.amount
-);
-}
-);
-});
-customAmount.addEventListener(
-"input",
-function(){
-amountButtons.forEach(
-function(btn){
-btn.classList.remove("selected");
-});
-const amount =
-Number(this.value);
-if(amount > 0){
-donationAmount =
-amount;
-selectedAmount.textContent =
-"₹" +
-amount.toLocaleString("en-IN");
-paymentStatus.style.display =
-"none";
-}else{
-donationAmount =
-null;
-selectedAmount.textContent =
-"Select amount";
-}
-}
-);
-function requireAmount(){
-const amount =
-getAmount();
-if(!amount || amount <= 0){
-paymentStatus.style.display =
-"block";
-paymentStatus.innerHTML =
-"<strong>Please select a donation amount.</strong>" +
-"<br><br>" +
-"Choose an amount or enter a custom amount.";
-return null;
-}
-return amount;
-}
-function buildUPI(){
-const amount =
-requireAmount();
-if(!amount){
-return null;
-}
-return "upi://pay" +
-"?pa=" +
-encodeURIComponent(UPI_ID) +
-"&pn=" +
-encodeURIComponent(PAYEE_NAME) +
-"&am=" +
-encodeURIComponent(
-amount.toFixed(2)
-) +
-"&cu=INR";
-}
-function openPayment(url,name){
-if(!url){
-return;
-}
-paymentStatus.style.display =
-"none";
-let appOpened = false;
-function visibilityHandler(){
-if(document.hidden){
-appOpened = true;
-}
-}
-document.addEventListener(
-"visibilitychange",
-visibilityHandler
-);
-/*
-  Try the requested app first.
-*/
-window.location.href =
-url;
-setTimeout(
-function(){
-document.removeEventListener(
-"visibilitychange",
-visibilityHandler
-);
-if(!appOpened){
-paymentStatus.style.display =
-"block";
-paymentStatus.innerHTML =
-"<strong>" +
-name +
-" could not be opened directly.</strong>" +
-"<br><br>" +
-"Please use the QR code or copy the UPI ID.";
-}
-},
-2200
-);
-}
-/* ================= PHONEPE ================= */
-window.payPhonePe =
-function(){
-const upi =
-buildUPI();
-if(!upi){
-return;
-}
-const query =
-upi.split("?")[1];
-openPayment(
-"phonepe://pay?" + query,
-"PhonePe"
-);
-};
-/* ================= GOOGLE PAY ================= */
-window.payGPay =
-function(){
-const upi =
-buildUPI();
-if(!upi){
-return;
-}
-const query =
-upi.split("?")[1];
-openPayment(
-"gpay://upi/pay?" + query,
-"Google Pay"
-);
-};
-/* ======================== PAYTM ======================== */
-window.payPaytm = function() {
-  const upi = buildUPI();
-  if(!upi){
-    return;
-  }
-  
-  const query = upi.split("?")[1];
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  
-  let paytmURL = "";
-  
-  if (isIOS) {
-    paytmURL = "paytmmp://pay?" + query; 
-  } else {
-    paytmURL = "intent://pay?" + query + "#Intent;scheme=paytmmp;package=net.one97.paytm;end";
-  }
 
-  openPayment(
-    paytmURL,
-    "Paytm"
-  );
-};
-/* ================= COPY UPI ================= */
-window.copyUPI =
-async function(){
-try{
-if(
-navigator.clipboard &&
-window.isSecureContext
-){
-await navigator.clipboard.writeText(
-UPI_ID
-);
-}else{
-const textarea =
-document.createElement("textarea");
-textarea.value =
-UPI_ID;
-textarea.style.position =
-"fixed";
-textarea.style.left =
-"-9999px";
-document.body.appendChild(
-textarea
-);
-textarea.focus();
-textarea.select();
-document.execCommand("copy");
-document.body.removeChild(
-textarea
-);
-}
-copySuccess.style.display =
-"block";
-setTimeout(
-function(){
-copySuccess.style.display =
-"none";
-},
-2000
-);
-}catch(error){
-alert(
-"UPI ID: " + UPI_ID
-);
-}
-};
-})();
-</script>  
+Integrate Razorpay Standard Web Checkout into this codebase.
+
+=== CREDENTIALS ===
+
+RAZORPAY_KEY_ID: rzp_test_TVxnMosYUfS7rg
+RAZORPAY_KEY_SECRET: es7RHcyWhX57TJ8FZ9Nq0wIZ
+
+=== TASK ===
+
+Detect the project stack and implement Razorpay Standard Checkout with:
+1. Backend endpoint to create orders
+2. Frontend checkout button with payment modal
+3. Backend endpoint to verify payment signature
+
+=== IMPLEMENTATION DETAILS ===
+
+STEP 1: BACKEND - Create Order
+- Endpoint: POST /api/create-order (or framework equivalent)
+- Call Razorpay API: POST https://api.razorpay.com/v1/orders
+- Request: { amount (paise), currency, receipt }
+- Return: { order_id, amount, currency }
+- Minimum amount: 100 paise
+
+STEP 2: FRONTEND - Checkout
+- Script: <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+- On button click: call create-order, then open Razorpay modal with order_id
+- On success: receive razorpay_payment_id, razorpay_order_id, razorpay_signature
+- Send all three to verify endpoint
+
+STEP 3: BACKEND - Verify Signature
+- Endpoint: POST /api/verify-payment (or framework equivalent)
+- Algorithm: HMAC-SHA256(order_id + "|" + payment_id, KEY_SECRET)
+- Compare generated signature with razorpay_signature
+- Return success only if signatures match
+
+=== ENVIRONMENT SETUP ===
+
+Create .env file:
+RAZORPAY_KEY_ID=rzp_test_TVxnMosYUfS7rg
+RAZORPAY_KEY_SECRET=es7RHcyWhX57TJ8FZ9Nq0wIZ
+
+Frontend framework prefixes (KEY_ID only, never KEY_SECRET):
+- Next.js: NEXT_PUBLIC_RAZORPAY_KEY_ID
+- Vite: VITE_RAZORPAY_KEY_ID
+- CRA: REACT_APP_RAZORPAY_KEY_ID
+
+Add .env to .gitignore.
+
+=== SDK INSTALLATION ===
+
+Node.js: npm install razorpay
+Python: pip install razorpay
+PHP: composer require razorpay/razorpay
+Ruby: gem install razorpay
+Go: go get github.com/razorpay/razorpay-go
+
+=== OPERATION ORDER ===
+
+Execute in this sequence:
+1. Install dependencies first
+2. Create .env file
+3. Create or modify code files
+4. Verify setup
+
+=== ERROR HANDLING ===
+
+Backend - Create Order:
+- Validate amount >= 100 paise
+- Handle Razorpay API errors (return 500)
+- Handle auth failures (return 401)
+
+Backend - Verify Signature:
+- Signature mismatch: return 400, do NOT mark as paid
+- Missing fields: return 400
+
+Frontend:
+- Handle modal dismiss (user cancelled)
+- Handle payment.failed event
+- Show error messages to user
+
+=== EDGE CASES ===
+
+If no backend framework detected:
+- Stop and explain that Razorpay requires a backend for order creation
+- Suggest serverless functions (Vercel/Netlify) or Razorpay Payment Links
+
+If Razorpay already integrated:
+- Do not duplicate code
+- Only fix or complete missing parts
+
+If static site only:
+- Suggest adding serverless API routes
+- Or suggest Razorpay Payment Links as alternative
+
+=== REQUIREMENTS ===
+
+- Never hardcode credentials in source files
+- KEY_SECRET must never reach frontend code
+- Use environment variables everywhere
+- Follow existing code style in the project
+- Do not create database tables unless project already has a database
+
+=== REFERENCE ===
+
+Documentation: https://razorpay.com/docs/payments/payment-gateway/web-integration/standard/integration-steps/
+
+=== OUTPUT ===
+
+After completing integration:
+1. List files created or modified
+2. Explain how to test (e.g., start server, click pay button)
+3. Note any manual steps required
+
+Begin integration now.
   
 <!-- ================= UPDATES ================= -->
 
