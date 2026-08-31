@@ -1276,8 +1276,829 @@ footer,
 
 </section>
 
-  
+  <!-- ================= DONATE PAYMENT ================= -->
 
+<style>
+.payment-wrap{
+  margin-top:45px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.payment-box{
+  background:#fff;
+  padding:30px;
+  border:1px solid #dde3ea;
+  border-radius:21px;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.payment-box h3{
+  font-size:22px;
+  margin-bottom:8px;
+}
+
+.payment-box > p{
+  color:#667085;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.amount-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+  margin:22px 0 14px;
+}
+
+.amount-btn{
+  padding:13px 7px;
+  background:#fff;
+  border:1px solid #d4dae2;
+  border-radius:9px;
+  font-weight:800;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.amount-btn:hover,
+.amount-btn.selected{
+  background:#ef4444;
+  border-color:#ef4444;
+  color:#fff;
+}
+
+.custom-amount{
+  width:100%;
+  padding:15px;
+  border:1px solid #d4dae2;
+  border-radius:9px;
+  outline:none;
+  font-size:15px;
+}
+
+.selected-amount{
+  margin-top:15px;
+  padding:14px;
+  background:#f6f8fa;
+  border-radius:9px;
+  text-align:center;
+  font-weight:900;
+  font-size:18px;
+}
+
+.payment-options{
+  margin-top:20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.pay-option{
+  padding:15px 10px;
+  border:1px solid #d4dae2;
+  background:#fff;
+  border-radius:10px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.pay-option:hover{
+  border-color:#ef4444;
+  transform:translateY(-2px);
+}
+
+.upi-display{
+  margin-top:20px;
+  padding:15px;
+  background:#f6f8fa;
+  border:1px solid #e0e5eb;
+  border-radius:12px;
+}
+
+.upi-value-row{
+  display:flex;
+  gap:8px;
+  margin-top:8px;
+}
+
+.upi-value{
+  flex:1;
+  min-width:0;
+  padding:12px;
+  background:#fff;
+  border:1px solid #e0e5eb;
+  border-radius:8px;
+  font-weight:800;
+  word-break:break-all;
+}
+
+.copy-upi{
+  padding:0 14px;
+  border:1px solid #d4dae2;
+  background:#fff;
+  border-radius:8px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.copy-success{
+  display:none;
+  margin-top:8px;
+  font-size:13px;
+  color:#15803d;
+  font-weight:700;
+}
+
+.qr-box{
+  text-align:center;
+}
+
+.qr-box img{
+  width:260px;
+  height:260px;
+  max-width:100%;
+  margin:20px auto 0;
+  object-fit:contain;
+  border-radius:14px;
+  border:1px solid #e0e5eb;
+}
+
+.qr-box small{
+  display:block;
+  margin-top:12px;
+  color:#667085;
+  line-height:1.5;
+}
+
+.payment-status{
+  display:none;
+  margin-top:15px;
+  padding:13px;
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  border-radius:9px;
+  color:#9a3412;
+  font-size:13px;
+  line-height:1.5;
+}
+
+@media(max-width:850px){
+  .payment-wrap{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+
+  .payment-box{
+    padding:20px;
+  }
+
+  .amount-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .qr-box img{
+    width:230px;
+    height:230px;
+  }
+
+  .upi-value-row{
+    align-items:stretch;
+  }
+
+  .copy-upi{
+    padding:0 11px;
+  }
+}
+</style>
+
+
+<section id="donate">
+
+<div class="container">
+
+<div class="center fade">
+
+<div class="kicker">
+MAKE A DIFFERENCE
+</div>
+
+<h2 class="title">
+Support Flood Relief
+</h2>
+
+<p class="text">
+Choose your donation amount and make a UPI payment.
+</p>
+
+</div>
+
+
+<div class="payment-wrap">
+
+
+<!-- ================= PAYMENT BOX ================= -->
+
+<div class="payment-box fade">
+
+<h3>Choose Donation Amount</h3>
+
+<p>
+Select an amount or enter your own amount.
+</p>
+
+
+<div class="amount-grid">
+
+<button type="button" class="amount-btn" data-amount="100">
+₹100
+</button>
+
+<button type="button" class="amount-btn" data-amount="200">
+₹200
+</button>
+
+<button type="button" class="amount-btn" data-amount="500">
+₹500
+</button>
+
+<button type="button" class="amount-btn" data-amount="1000">
+₹1,000
+</button>
+
+<button type="button" class="amount-btn" data-amount="2000">
+₹2,000
+</button>
+
+<button type="button" class="amount-btn" data-amount="5000">
+₹5,000
+</button>
+
+<button type="button" class="amount-btn" data-amount="10000">
+₹10,000
+</button>
+
+</div>
+
+
+<input
+type="number"
+id="customAmount"
+class="custom-amount"
+placeholder="Custom amount ₹"
+min="1"
+step="1"
+inputmode="numeric"
+>
+
+
+<div class="selected-amount">
+
+Donation:
+<span id="selectedAmount">
+Select amount
+</span>
+
+</div>
+
+
+<!-- ================= PAYMENT OPTIONS ================= -->
+
+<div class="payment-options">
+
+<button
+type="button"
+class="pay-option"
+onclick="payPhonePe()">
+PhonePe
+</button>
+
+<button
+type="button"
+class="pay-option"
+onclick="payGPay()">
+Google Pay
+</button>
+
+<button
+type="button"
+class="pay-option"
+onclick="payPaytm()">
+Paytm
+</button>
+
+<button
+type="button"
+class="pay-option"
+onclick="payUPI()">
+Pay via UPI
+</button>
+
+</div>
+
+
+<!-- ================= UPI ID ================= -->
+
+<div class="upi-display">
+
+<strong>UPI ID</strong>
+
+<div class="upi-value-row">
+
+<div
+class="upi-value"
+id="upiIdText">
+paytmqr5indd7@ptys
+</div>
+
+<button
+type="button"
+class="copy-upi"
+onclick="copyUPI()">
+COPY
+</button>
+
+</div>
+
+<div
+id="copySuccess"
+class="copy-success">
+UPI ID copied successfully.
+</div>
+
+</div>
+
+
+<div
+id="paymentStatus"
+class="payment-status">
+</div>
+
+</div>
+
+
+<!-- ================= QR BOX ================= -->
+
+<div class="payment-box qr-box fade">
+
+<h3>Scan & Donate</h3>
+
+<p>
+Scan the QR code using your preferred UPI app.
+</p>
+
+<img
+id="upiQR"
+src=""
+alt="HelpingHearts UPI QR Code"
+>
+
+<small id="qrText">
+Select a donation amount to generate the QR code.
+</small>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+(function(){
+
+/* ================= PAYMENT DETAILS ================= */
+
+const UPI_ID = "paytmqr5indd7@ptys";
+
+const PAYEE_NAME = "RAVIN";
+
+let donationAmount = null;
+
+
+/* ================= ELEMENTS ================= */
+
+const amountButtons =
+document.querySelectorAll(".amount-btn");
+
+const customAmount =
+document.getElementById("customAmount");
+
+const selectedAmount =
+document.getElementById("selectedAmount");
+
+const paymentStatus =
+document.getElementById("paymentStatus");
+
+const copySuccess =
+document.getElementById("copySuccess");
+
+const upiIdText =
+document.getElementById("upiIdText");
+
+const upiQR =
+document.getElementById("upiQR");
+
+const qrText =
+document.getElementById("qrText");
+
+
+upiIdText.textContent = UPI_ID;
+
+
+/* ================= AMOUNT ================= */
+
+function getAmount(){
+
+const custom =
+Number(customAmount.value);
+
+if(custom > 0){
+return custom;
+}
+
+if(
+donationAmount !== null &&
+donationAmount > 0
+){
+return donationAmount;
+}
+
+return null;
+
+}
+
+
+/* ================= SET AMOUNT ================= */
+
+function setAmount(amount){
+
+donationAmount =
+Number(amount);
+
+selectedAmount.textContent =
+"₹" +
+donationAmount.toLocaleString("en-IN");
+
+paymentStatus.style.display =
+"none";
+
+updateQR();
+
+}
+
+
+/* ================= AMOUNT BUTTONS ================= */
+
+amountButtons.forEach(function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+amountButtons.forEach(
+function(btn){
+btn.classList.remove("selected");
+}
+);
+
+this.classList.add("selected");
+
+customAmount.value = "";
+
+setAmount(
+this.dataset.amount
+);
+
+}
+);
+
+});
+
+
+/* ================= CUSTOM AMOUNT ================= */
+
+customAmount.addEventListener(
+"input",
+function(){
+
+amountButtons.forEach(
+function(btn){
+btn.classList.remove("selected");
+}
+);
+
+const amount =
+Number(this.value);
+
+if(amount > 0){
+
+donationAmount =
+amount;
+
+selectedAmount.textContent =
+"₹" +
+amount.toLocaleString("en-IN");
+
+paymentStatus.style.display =
+"none";
+
+}else{
+
+donationAmount =
+null;
+
+selectedAmount.textContent =
+"Select amount";
+
+}
+
+updateQR();
+
+}
+);
+
+
+/* ================= REQUIRE AMOUNT ================= */
+
+function requireAmount(){
+
+const amount =
+getAmount();
+
+if(!amount || amount <= 0){
+
+paymentStatus.style.display =
+"block";
+
+paymentStatus.innerHTML =
+"<strong>Please select a donation amount.</strong>" +
+"<br><br>" +
+"Choose an amount or enter a custom amount.";
+
+return null;
+
+}
+
+return amount;
+
+}
+
+
+/* ================= STANDARD UPI ================= */
+
+function buildUPI(){
+
+const amount =
+requireAmount();
+
+if(!amount){
+return null;
+}
+
+return "upi://pay" +
+"?pa=" +
+encodeURIComponent(UPI_ID) +
+"&pn=" +
+encodeURIComponent(PAYEE_NAME) +
+"&am=" +
+encodeURIComponent(
+amount.toFixed(2)
+) +
+"&cu=INR";
+
+}
+
+
+/* ================= QR ================= */
+
+function updateQR(){
+
+const amount =
+getAmount();
+
+if(!amount || amount <= 0){
+
+upiQR.removeAttribute("src");
+
+qrText.textContent =
+"Select a donation amount to generate the QR code.";
+
+return;
+
+}
+
+const upiURL =
+"upi://pay" +
+"?pa=" +
+encodeURIComponent(UPI_ID) +
+"&pn=" +
+encodeURIComponent(PAYEE_NAME) +
+"&am=" +
+encodeURIComponent(
+amount.toFixed(2)
+) +
+"&cu=INR";
+
+
+upiQR.src =
+"https://api.qrserver.com/v1/create-qr-code/" +
+"?size=500x500&data=" +
+encodeURIComponent(upiURL);
+
+
+qrText.textContent =
+"Scan to pay ₹" +
+amount.toLocaleString("en-IN") +
+" to " +
+PAYEE_NAME +
+".";
+
+
+}
+
+
+/* ================= STANDARD UPI BUTTON ================= */
+
+window.payUPI =
+function(){
+
+const upi =
+buildUPI();
+
+if(!upi){
+return;
+}
+
+paymentStatus.style.display =
+"none";
+
+window.location.href =
+upi;
+
+};
+
+
+/* ================= PHONEPE ================= */
+
+window.payPhonePe =
+function(){
+
+const upi =
+buildUPI();
+
+if(!upi){
+return;
+}
+
+const query =
+upi.split("?")[1];
+
+/*
+  Standard UPI fallback.
+  The browser/device decides which
+  installed UPI application handles it.
+*/
+
+window.location.href =
+"upi://pay?" +
+query;
+
+};
+
+
+/* ================= GOOGLE PAY ================= */
+
+window.payGPay =
+function(){
+
+const upi =
+buildUPI();
+
+if(!upi){
+return;
+}
+
+const query =
+upi.split("?")[1];
+
+window.location.href =
+"upi://pay?" +
+query;
+
+};
+
+
+/* ================= PAYTM ================= */
+
+window.payPaytm =
+function(){
+
+const upi =
+buildUPI();
+
+if(!upi){
+return;
+}
+
+const query =
+upi.split("?")[1];
+
+window.location.href =
+"upi://pay?" +
+query;
+
+};
+
+
+/* ================= COPY UPI ================= */
+
+window.copyUPI =
+async function(){
+
+try{
+
+if(
+navigator.clipboard &&
+window.isSecureContext
+){
+
+await navigator.clipboard.writeText(
+UPI_ID
+);
+
+}else{
+
+const textarea =
+document.createElement("textarea");
+
+textarea.value =
+UPI_ID;
+
+textarea.style.position =
+"fixed";
+
+textarea.style.left =
+"-9999px";
+
+document.body.appendChild(
+textarea
+);
+
+textarea.focus();
+
+textarea.select();
+
+document.execCommand("copy");
+
+document.body.removeChild(
+textarea
+);
+
+}
+
+
+copySuccess.style.display =
+"block";
+
+
+setTimeout(
+function(){
+
+copySuccess.style.display =
+"none";
+
+},
+2000
+);
+
+
+}catch(error){
+
+alert(
+"UPI ID: " +
+UPI_ID
+);
+
+}
+
+};
+
+
+/* ================= INITIAL QR ================= */
+
+updateQR();
+
+})();
+
+  </script>
 <!-- ================= UPDATES ================= -->
 
 <section id="updates">
